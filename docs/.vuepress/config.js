@@ -60,6 +60,10 @@ module.exports = {
       exclude: [],
     }],
 
+    ['git-log', {
+      additionalArgs: '--no-merges',
+    }],
+
     ['keyboard-event-debug'],
 
     ['sitemap', {
