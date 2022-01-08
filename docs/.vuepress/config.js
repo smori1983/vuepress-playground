@@ -25,7 +25,14 @@ module.exports = {
           '/parsing/parser_generator.md',
           '/parsing/lexical_analysis.md',
         ],
-      }
+      },
+      {
+        title: '未分類',
+        collapsable: false,
+        children: [
+          '/misc/keyboard_event.md',
+        ],
+      },
     ],
   },
 
