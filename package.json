@@ -1,0 +1,21 @@
+{
+  "name": "vuepress-playground",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smori1983/vuepress-playground.git"
+  },
+  "keywords": [
+    "vuepress"
+  ],
+  "author": "Shinichiro MORI",
+  "license": "MIT",
+  "homepage": "https://github.com/smori1983/vuepress-playground"
+}
