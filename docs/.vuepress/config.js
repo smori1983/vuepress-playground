@@ -9,6 +9,13 @@ module.exports = {
   themeConfig: {
     sidebar: [
       {
+        title: 'デバッグ',
+        collapsable: false,
+        children: [
+          '/debug/site_pages.md',
+        ],
+      },
+      {
         title: '国',
         collapsable: false,
         children: [
