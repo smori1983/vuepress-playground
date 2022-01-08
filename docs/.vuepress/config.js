@@ -28,4 +28,10 @@ module.exports = {
       }
     ],
   },
+
+  markdown: {
+    extendMarkdown: (md) => {
+      md.set({ breaks: true });
+    },
+  },
 };
