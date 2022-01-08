@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "vuepress": "^1.9.5",
+    "vuepress-types": "^0.9.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/smori1983/vuepress-playground.git"
