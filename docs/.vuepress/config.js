@@ -29,6 +29,10 @@ module.exports = {
     ],
   },
 
+  plugins: [
+    ['keyboard-event-debug'],
+  ],
+
   markdown: {
     extendMarkdown: (md) => {
       md.set({ breaks: true });
