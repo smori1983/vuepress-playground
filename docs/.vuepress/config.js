@@ -61,6 +61,9 @@ module.exports = {
     }],
 
     ['git-log', {
+      formatTime: (timestamp, lang) => {
+        return timestamp;
+      },
       additionalArgs: '--no-merges',
     }],
 
