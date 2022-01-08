@@ -8,6 +8,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "http-server": "^14.0.0",
     "vuepress": "^1.9.5",
     "vuepress-types": "^0.9.4"
   },
