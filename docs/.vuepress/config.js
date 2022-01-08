@@ -37,6 +37,8 @@ module.exports = {
   },
 
   plugins: [
+    ['@vuepress/back-to-top'],
+
     ['keyboard-event-debug'],
   ],
 
