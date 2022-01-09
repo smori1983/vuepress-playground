@@ -17,6 +17,7 @@
     "vuepress": "^1.9.7",
     "vuepress-plugin-component-catalog": "^0.6.7",
     "vuepress-plugin-keyboard-event-debug": "^1.0.1",
+    "vuepress-plugin-sitemap": "^2.3.1",
     "vuepress-types": "^0.9.4"
   },
   "repository": {
