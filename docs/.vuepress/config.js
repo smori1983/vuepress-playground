@@ -46,7 +46,9 @@ module.exports = {
   plugins: [
     ['@vuepress/back-to-top'],
 
-    ['component-catalog'],
+    ['component-catalog', {
+      distDirPrefix: 'misc/components',
+    }],
 
     ['keyboard-event-debug'],
   ],
