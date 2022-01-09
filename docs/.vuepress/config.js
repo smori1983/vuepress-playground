@@ -26,6 +26,13 @@ module.exports = {
         ],
       },
       {
+        title: 'Plugin',
+        collapsable: false,
+        children: [
+          '/plugin/tags.md',
+        ],
+      },
+      {
         title: 'Misc',
         collapsable: false,
         path: '/misc/',
