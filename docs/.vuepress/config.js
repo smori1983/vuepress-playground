@@ -54,6 +54,10 @@ module.exports = {
     }],
 
     ['keyboard-event-debug'],
+
+    ['sitemap', {
+      hostname: 'https://vuepress-playground.example.com',
+    }],
   ],
 
   markdown: {
