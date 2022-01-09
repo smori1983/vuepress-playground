@@ -49,6 +49,8 @@ module.exports = {
 
     ['component-catalog', {
       distDirPrefix: 'misc/components',
+      include: [],
+      exclude: [],
     }],
 
     ['keyboard-event-debug'],
