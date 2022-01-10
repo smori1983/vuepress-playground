@@ -74,6 +74,8 @@ module.exports = {
       exclude: ['/404.html'],
     }],
 
+    [require('./plugins/playground-git-log')],
+
     [require('./plugins/playground-table-search')],
   ],
 
