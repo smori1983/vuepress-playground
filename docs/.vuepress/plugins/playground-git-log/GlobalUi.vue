@@ -26,12 +26,12 @@ export default {
   },
 
   mounted() {
-    this.git = this.$page.git || null;
+    this.git = this.prepareGit();
   },
 
   watch: {
     $page() {
-      this.git = this.$page.git || null;
+      this.git = this.prepareGit();
     },
 
     git() {
@@ -48,6 +48,14 @@ export default {
   },
 
   methods: {
+    prepareGit() {
+      if (!this.$page.git) {
+        return null;
+      }
+
+      return this.$page.git.author ? this.$page.git : null;
+    },
+
     /**
      * Note: vuepress-plugin-git-log has bug in extendPageData().
      */
