@@ -26,12 +26,12 @@ export default {
   },
 
   mounted() {
-    this.git = this.$page.git || {};
+    this.git = this.$page.git || null;
   },
 
   watch: {
     $page() {
-      this.git = this.$page.git || {};
+      this.git = this.$page.git || null;
     },
 
     git() {
