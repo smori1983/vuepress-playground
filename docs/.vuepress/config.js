@@ -37,6 +37,7 @@ module.exports = {
         title: '未分類',
         collapsable: false,
         children: [
+          '/misc/components/',
           '/misc/keyboard_event.md',
         ],
       },
@@ -45,6 +46,12 @@ module.exports = {
 
   plugins: [
     ['@vuepress/back-to-top'],
+
+    ['component-catalog', {
+      distDirPrefix: 'misc/components',
+      include: [],
+      exclude: [],
+    }],
 
     ['keyboard-event-debug'],
   ],
