@@ -35,9 +35,11 @@ export default {
     },
 
     git() {
-      this.created = this.getDate(this.getCreated(this.git));
-      this.updated = this.getDate(this.getUpdated(this.git));
-      this.authors = this.getAuthors(this.git.author, this.git.contributors);
+      if (this.git) {
+        this.created = this.getDate(this.getCreated(this.git));
+        this.updated = this.getDate(this.getUpdated(this.git));
+        this.authors = this.getAuthors(this.git.author, this.git.contributors);
+      }
     },
   },
 
