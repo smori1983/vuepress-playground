@@ -1,5 +1,5 @@
 module.exports = (md) => {
-  md.core.ruler.push('playground_git_log', ((state) => {
+  md.core.ruler.push('plugin_playground_git_log', ((state) => {
     const token1 = new state.Token('hr', 'hr', 0);
     token1.markup = '-----';
     token1.block = true;
