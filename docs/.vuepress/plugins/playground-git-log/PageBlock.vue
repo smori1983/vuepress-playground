@@ -9,9 +9,14 @@
 </template>
 
 <script>
+import PreparationMixin from './PreparationMixin';
 import GitInfo from './GitInfo';
 
 export default {
+  mixins: [
+    PreparationMixin,
+  ],
+
   components: {
     GitInfo,
   },
@@ -24,16 +29,6 @@ export default {
 
   mounted() {
     this.git = this.prepareGit();
-  },
-
-  methods: {
-    prepareGit() {
-      if (!this.$page.git) {
-        return null;
-      }
-
-      return this.$page.git.author ? this.$page.git : null;
-    },
   },
 };
 </script>
