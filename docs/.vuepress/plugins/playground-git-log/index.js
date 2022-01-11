@@ -1,17 +1,26 @@
 const path = require('path');
 
-module.exports = {
-  enhanceAppFiles: [
-    path.resolve(__dirname, 'enhanceAppFile.js'),
-  ],
+module.exports = (options) => {
+  const {
+    useGlobalUi = false,
+    usePageBlock = false,
+  } = options;
 
-  chainMarkdown(config) {
-    config
-      .plugin('playground-git-log')
-      .use(require('./markdown-it-plugin'));
-  },
+  return {
+    enhanceAppFiles: [
+      path.resolve(__dirname, 'enhanceAppFile.js'),
+    ],
 
-  globalUIComponents: [
-    'PluginPlaygroundGitLogGlobalUi',
-  ],
+    chainMarkdown(config) {
+      if (usePageBlock) {
+        config
+          .plugin('playground-git-log')
+          .use(require('./markdown-it-plugin'));
+      }
+    },
+
+    globalUIComponents: useGlobalUi ? [
+      'PluginPlaygroundGitLogGlobalUi',
+    ] : [],
+  };
 };
