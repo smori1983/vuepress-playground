@@ -65,6 +65,7 @@ module.exports = {
         return timestamp;
       },
       additionalArgs: '--no-merges',
+      onlyFirstAndLastCommit: false,
     }],
 
     ['keyboard-event-debug'],
