@@ -59,8 +59,8 @@ export default {
       }
     },
 
-    getDate(timestamp) {
-      const date = new Date(timestamp * 1000);
+    getDate(dateValue) {
+      const date = this.getDateObject(dateValue);
 
       return sprintf(
         '%d/%02d/%02d %02d:%02d',
@@ -70,6 +70,18 @@ export default {
         date.getHours(),
         date.getMinutes()
       );
+    },
+
+    /**
+     * @param {string} dateValue
+     * @returns {Date}
+     */
+    getDateObject(dateValue) {
+      if (/^\d+$/.test(dateValue)) {
+        return new Date(dateValue * 1000);
+      } else {
+        return new Date(dateValue);
+      }
     },
 
     getAuthors(author, contributors) {
