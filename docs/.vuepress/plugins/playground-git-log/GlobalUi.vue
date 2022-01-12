@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import PreparationMixin from './PreparationMixin';
+import preparationMixin from './preparationMixin';
 import GitInfo from './GitInfo';
 
 export default {
   mixins: [
-    PreparationMixin,
+    preparationMixin,
   ],
 
   components: {
