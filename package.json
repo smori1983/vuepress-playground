@@ -11,10 +11,10 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.9.5",
+    "@vuepress/plugin-back-to-top": "^1.9.7",
     "http-server": "^14.1.0",
     "sprintf-js": "^1.1.2",
-    "vuepress": "^1.9.5",
+    "vuepress": "^1.9.7",
     "vuepress-plugin-component-catalog": "^0.6.7",
     "vuepress-plugin-keyboard-event-debug": "^1.0.1",
     "vuepress-types": "^0.9.4"
