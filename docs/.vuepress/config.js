@@ -57,6 +57,7 @@ module.exports = {
 
     ['sitemap', {
       hostname: 'https://vuepress-playground.example.com',
+      exclude: ['/404.html'],
     }],
   ],
 
