@@ -59,6 +59,8 @@ module.exports = {
       hostname: 'https://vuepress-playground.example.com',
       exclude: ['/404.html'],
     }],
+
+    [require('./plugins/link-title')],
   ],
 
   markdown: {
