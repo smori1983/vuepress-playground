@@ -13,6 +13,7 @@ module.exports = {
         collapsable: false,
         children: [
           '/debug/site_pages.md',
+          '/debug/link_title.md',
         ],
       },
       {
