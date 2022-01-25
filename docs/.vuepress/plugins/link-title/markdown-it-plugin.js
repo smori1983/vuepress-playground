@@ -6,7 +6,7 @@ const modifyLinkTitle = (pages, token) => {
         token.children[1].type === 'text' &&
         token.children[2].type === 'link_close'
       ) {
-        const href = getHref(token.children[0].attrs);
+        const href = token.children[0].attrGet('href');
 
         let page;
         if ((page = findPageForHref(pages, href))) {
@@ -19,17 +19,6 @@ const modifyLinkTitle = (pages, token) => {
       });
     }
   }
-};
-
-// Check: @vuepress/markdown/lib/link.js
-const getHref = (attrs) => {
-  for (let i = 0; i < attrs.length; i++) {
-    if (attrs[i][0] === 'href') {
-      return attrs[i][1];
-    }
-  }
-
-  return null;
 };
 
 const findPageForHref = (pages, href) => {
