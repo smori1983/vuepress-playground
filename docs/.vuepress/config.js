@@ -37,6 +37,7 @@ module.exports = {
       {
         title: '未分類',
         collapsable: false,
+        path: '/misc/',
         children: [
           '/misc/components/',
           '/misc/keyboard_event.md',

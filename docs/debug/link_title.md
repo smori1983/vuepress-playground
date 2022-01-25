@@ -7,5 +7,7 @@
 - [!](/parsing/parse_tree.md)
 - [!](/parsing/parser_generator.md)
 - [!](/parsing/lexical_analysis.md)
+- [!](/misc/)
+- [!](/misc/README.md)
 - [!](/misc/components/)
 - [!](/misc/keyboard_event.md)
