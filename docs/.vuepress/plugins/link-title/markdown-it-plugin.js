@@ -7,26 +7,35 @@ const marker = '!';
 const modifyLinkTitle = (pages, tokens) => {
   tokens.forEach((token) => {
     if (token.type === 'inline' && token.children.length > 0) {
-      if (token.children[0].type === 'link_open') {
-        if (
-          token.children[0].type === 'link_open' &&
-          token.children[1].type === 'text' &&
-          token.children[2].type === 'link_close'
-        ) {
-          const href = token.children[0].attrGet('href');
+      for (let i = 0, len = token.children.length; i < len; i++) {
+        if (isSimpleLink(token.children, i)) {
+          const href = token.children[i].attrGet('href');
 
           let page;
           if ((page = findPageForHref(pages, href))) {
-            if (token.children[1].content === marker) {
-              token.children[1].content = page.title;
+            if (token.children[i + 1].content === marker) {
+              token.children[i + 1].content = page.title;
             }
           }
+          i += 3;
         }
-      } else {
-        modifyLinkTitle(pages, token.children);
       }
     }
   });
+};
+
+/**
+ * @param {Object[]} tokens
+ * @param {number} index
+ * @returns {boolean}
+ */
+const isSimpleLink = (tokens, index) => {
+  return (
+    tokens.length > (index + 2) &&
+    tokens[index + 0].type === 'link_open' &&
+    tokens[index + 1].type === 'text' &&
+    tokens[index + 2].type === 'link_close'
+  );
 };
 
 const findPageForHref = (pages, href) => {
