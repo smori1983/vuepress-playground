@@ -1,3 +1,5 @@
+const marker = '!';
+
 const modifyLinkTitle = (pages, token) => {
   if (token.type === 'inline' && token.children.length > 0) {
     if (token.children[0].type === 'link_open') {
@@ -10,7 +12,9 @@ const modifyLinkTitle = (pages, token) => {
 
         let page;
         if ((page = findPageForHref(pages, href))) {
-          token.children[1].content = page.title;
+          if (token.children[1].content === marker) {
+            token.children[1].content = page.title;
+          }
         }
       }
     } else {
