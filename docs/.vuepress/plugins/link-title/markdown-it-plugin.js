@@ -1,10 +1,9 @@
-const marker = '!';
-
 /**
  * @param {Object[]} pages
  * @param {Object[]} tokens
+ * @param {string} marker
  */
-const modifyLinkTitle = (pages, tokens) => {
+const modifyLinkTitle = (pages, tokens, marker) => {
   tokens.forEach((token) => {
     if (token.type === 'inline' && token.children.length > 0) {
       for (let i = 0, len = token.children.length; i < len; i++) {
@@ -50,10 +49,10 @@ const findPageForHref = (pages, href) => {
   return null;
 }
 
-module.exports = ((ctx) => {
+module.exports = ((ctx, { marker }) => {
   return (md) => {
     md.core.ruler.push('vuepress_plugin_playground_link_title', ((state) => {
-      modifyLinkTitle(ctx.pages, state.tokens);
+      modifyLinkTitle(ctx.pages, state.tokens, marker);
     }));
   };
 });
