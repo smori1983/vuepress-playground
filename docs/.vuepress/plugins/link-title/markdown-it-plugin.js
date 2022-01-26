@@ -45,8 +45,12 @@ const findPageForHref = (pages, href) => {
     //
     // - href like '/path/': matches page.regularPath
     // - href like '/path/page.md': matches '/' + page.relativePath
-    //
-    if (href === page.regularPath || href === ('/' + page.relativePath)) {
+
+    if (href === page.regularPath) {
+      return page;
+    }
+
+    if (href === ('/' + page.relativePath)) {
       return page;
     }
   }
