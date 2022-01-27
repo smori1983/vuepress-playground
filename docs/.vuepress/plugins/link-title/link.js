@@ -23,9 +23,8 @@ class Link {
   rewriteTitle(pages, tokens) {
     tokens.forEach((token) => {
       if (token.type === 'inline' && token.children.length > 0) {
-        for (let i = 0, len = token.children.length; i < len; i++) {
+        for (let i = 0, len = token.children.length; i + 2 < len; i++) {
           if (
-            token.children.length > (i + 2) &&
             token.children[i].type === 'link_open' &&
             token.children[i + 1].type === 'text' &&
             token.children[i + 2].type === 'link_close'
