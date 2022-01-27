@@ -23,18 +23,20 @@ class Link {
   rewriteTitle(pages, tokens) {
     tokens.forEach((token) => {
       if (token.type === 'inline' && token.children.length > 0) {
-        for (let i = 0, len = token.children.length; i + 2 < len; i++) {
+        const children = token.children;
+
+        for (let i = 0, len = children.length; i + 2 < len; i++) {
           if (
-            token.children[i].type === 'link_open' &&
-            token.children[i + 1].type === 'text' &&
-            token.children[i + 2].type === 'link_close'
+            children[i].type === 'link_open' &&
+            children[i + 1].type === 'text' &&
+            children[i + 2].type === 'link_close'
           ) {
-            const href = token.children[i].attrGet('href');
+            const href = children[i].attrGet('href');
 
             let page;
             if ((page = this._findPageForHref(pages, href))) {
-              if (token.children[i + 1].content === this._marker) {
-                token.children[i + 1].content = page.title;
+              if (children[i + 1].content === this._marker) {
+                children[i + 1].content = page.title;
               }
             }
             i += 3;
