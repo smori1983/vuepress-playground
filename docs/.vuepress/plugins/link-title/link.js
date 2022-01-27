@@ -3,6 +3,16 @@ class Link {
    * @param {string} marker
    */
   constructor(marker) {
+    /**
+     * @type {Map<string, Object|null>}
+     * @private
+     */
+    this._found = new Map();
+
+    /**
+     * @type {string}
+     * @private
+     */
     this._marker = marker;
   }
 
@@ -41,6 +51,10 @@ class Link {
    * @private
    */
   _findPageForHref(pages, href) {
+    if (this._found.has(href)) {
+      return this._found.get(href);
+    }
+
     for (let i = 0; i < pages.length; i++) {
       const page = pages[i]
 
@@ -50,15 +64,27 @@ class Link {
       // - href like '/path/page.md': matches '/' + page.relativePath
 
       if (href === page.regularPath) {
-        return page;
+        return this._register(href, page);
       }
 
       if (href === ('/' + page.relativePath)) {
-        return page;
+        return this._register(href, page);
       }
     }
 
-    return null;
+    return this._register(href, null);
+  }
+
+  /**
+   * @param {string} href
+   * @param {Object|null} page
+   * @returns {Object|null}
+   * @private
+   */
+  _register(href, page) {
+    this._found.set(href, page);
+
+    return page;
   }
 }
 
