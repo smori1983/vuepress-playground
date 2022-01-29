@@ -49,6 +49,10 @@ module.exports = {
   plugins: [
     ['@vuepress/back-to-top'],
 
+    ['auto-link-label', {
+      marker: '!',
+    }],
+
     ['component-catalog', {
       distDirPrefix: 'misc/components',
       include: [],
@@ -61,8 +65,6 @@ module.exports = {
       hostname: 'https://vuepress-playground.example.com',
       exclude: ['/404.html'],
     }],
-
-    [require('./plugins/link-title')],
   ],
 
   markdown: {
