@@ -13,6 +13,7 @@ module.exports = {
         collapsable: false,
         children: [
           '/debug/site_pages.md',
+          '/debug/auto_link_label.md',
         ],
       },
       {
@@ -36,6 +37,7 @@ module.exports = {
       {
         title: '未分類',
         collapsable: false,
+        path: '/misc/',
         children: [
           '/misc/components/',
           '/misc/keyboard_event.md',
@@ -46,6 +48,10 @@ module.exports = {
 
   plugins: [
     ['@vuepress/back-to-top'],
+
+    ['auto-link-label', {
+      marker: '!',
+    }],
 
     ['component-catalog', {
       distDirPrefix: 'misc/components',

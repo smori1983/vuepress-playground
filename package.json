@@ -16,6 +16,7 @@
     "http-server": "^14.1.0",
     "sprintf-js": "^1.1.2",
     "vuepress": "^1.9.7",
+    "vuepress-plugin-auto-link-label": "^0.1.0",
     "vuepress-plugin-component-catalog": "^0.6.7",
     "vuepress-plugin-keyboard-event-debug": "^1.0.1",
     "vuepress-plugin-sitemap": "^2.3.1",
