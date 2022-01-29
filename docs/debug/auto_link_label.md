@@ -1,4 +1,6 @@
-# Auto generate link title
+# Auto link label
+
+[vuepress-plugin-auto-link-label](https://www.npmjs.com/package/vuepress-plugin-auto-link-label)
 
 - [!](/debug/site_pages.md)
 - [!](/country/india.md)
