@@ -41,6 +41,7 @@ module.exports = {
         children: [
           '/misc/components/',
           '/misc/keyboard_event.md',
+          '/misc/table_search.md',
         ],
       },
     ],
