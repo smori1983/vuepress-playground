@@ -103,7 +103,7 @@ export default {
           this.checkDateFrom(item.date) &&
           this.checkDateTo(item.date)
         );
-      })
+      });
     },
 
     checkName(name) {
