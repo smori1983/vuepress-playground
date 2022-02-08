@@ -65,6 +65,8 @@ module.exports = {
       hostname: 'https://vuepress-playground.example.com',
       exclude: ['/404.html'],
     }],
+
+    [require('./plugins/playground-table-search')],
   ],
 
   markdown: {
