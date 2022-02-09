@@ -145,8 +145,8 @@ export default {
         date.getMonth() + 1,
         date.getDate()
       );
-    }
-  }
+    },
+  },
 }
 </script>
 
