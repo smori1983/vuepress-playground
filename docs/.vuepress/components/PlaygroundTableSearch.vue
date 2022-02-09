@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import Datepicker from 'vuejs-datepicker';
+import Datepicker from 'vuejs-datepicker/src/components/Datepicker';
 import { sprintf } from 'sprintf-js';
 import data from '@dynamic/plugin-playground-table-search/data';
 
