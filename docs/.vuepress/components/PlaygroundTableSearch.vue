@@ -17,6 +17,7 @@
           wrapper-class="form-date-from"
           :clear-button="true"
           :highlighted="config.highlighted"
+          :language="config.language"
           format="yyyy/MM/dd"
           v-model="form.dateFrom"
           @input="search"
@@ -28,6 +29,7 @@
           wrapper-class="form-date-to"
           :clear-button="true"
           :highlighted="config.highlighted"
+          :language="config.language"
           format="yyyy/MM/dd"
           v-model="form.dateTo"
           @input="search"
@@ -55,8 +57,9 @@
 </template>
 
 <script>
-import Datepicker from 'vuejs-datepicker/src/components/Datepicker';
 import { sprintf } from 'sprintf-js';
+import Datepicker from 'vuejs-datepicker/src/components/Datepicker';
+import { ja } from 'vuejs-datepicker/dist/locale';
 import data from '@dynamic/plugin-playground-table-search/data';
 
 export default {
@@ -71,6 +74,7 @@ export default {
         highlighted: {
           dates: [],
         },
+        language: ja,
       },
       form: {
         name: '',
