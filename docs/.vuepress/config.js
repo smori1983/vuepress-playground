@@ -41,6 +41,7 @@ module.exports = {
         children: [
           '/misc/components/',
           '/misc/keyboard_event.md',
+          '/misc/table_search.md',
         ],
       },
     ],
@@ -65,6 +66,8 @@ module.exports = {
       hostname: 'https://vuepress-playground.example.com',
       exclude: ['/404.html'],
     }],
+
+    [require('./plugins/playground-table-search')],
   ],
 
   markdown: {
