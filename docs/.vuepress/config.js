@@ -60,6 +60,10 @@ module.exports = {
       exclude: [],
     }],
 
+    ['git-info', {
+      useGlobalUi: true,
+    }],
+
     ['git-log', {
       formatTime: (timestamp, lang) => {
         return timestamp;
