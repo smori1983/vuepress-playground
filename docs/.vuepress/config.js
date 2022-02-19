@@ -60,6 +60,18 @@ module.exports = {
       exclude: [],
     }],
 
+    ['git-info', {
+      useGlobalUi: true,
+    }],
+
+    ['git-log', {
+      formatTime: (timestamp, lang) => {
+        return timestamp;
+      },
+      additionalArgs: '--no-merges',
+      onlyFirstAndLastCommit: false,
+    }],
+
     ['keyboard-event-debug'],
 
     ['sitemap', {
