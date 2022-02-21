@@ -29,6 +29,7 @@ module.exports = {
               '/debug/flexsearch.md',
             ],
           },
+          '/md-enhance/',
           {
             title: 'Plugin (keyboard event debug)',
             collapsable: false,
