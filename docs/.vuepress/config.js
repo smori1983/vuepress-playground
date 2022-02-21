@@ -14,6 +14,7 @@ module.exports = {
           '/debug/site_pages.md',
         ],
       },
+      '/md-enhance/',
       {
         title: 'Demo',
         collapsable: false,
