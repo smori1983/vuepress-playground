@@ -135,6 +135,10 @@ module.exports = {
 
     ['keyboard-event-debug'],
 
+    ['md-enhance', {
+      codegroup: true,
+    }],
+
     //['sitemap', {
     //  hostname: 'https://vuepress-playground.example.com',
     //  exclude: ['/404.html'],
