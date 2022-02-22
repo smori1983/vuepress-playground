@@ -1,6 +1,9 @@
-## codegroup
+# CodeGroup
 
-### config
+[Document](https://vuepress-theme-hope.github.io/md-enhance/guide/code-group/)
+
+
+## config
 
 :::: code-group
 
@@ -26,7 +29,8 @@ key2: value2
 
 ::::
 
-### API
+
+## API
 
 :::: code-group
 
