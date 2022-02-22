@@ -65,6 +65,7 @@ module.exports = {
 
     ['md-enhance', {
       codegroup: true,
+      tasklist: true,
     }],
 
     //['sitemap', {
