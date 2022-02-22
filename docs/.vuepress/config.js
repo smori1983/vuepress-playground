@@ -138,6 +138,7 @@ module.exports = {
 
     ['md-enhance', {
       codegroup: true,
+      mermaid: true,
       tasklist: true,
     }],
 
