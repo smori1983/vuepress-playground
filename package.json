@@ -11,6 +11,8 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@gitgraph/core": "^1.5.0",
+    "@gitgraph/js": "^1.4.0",
     "@vuepress/plugin-back-to-top": "^1.9.7",
     "@vuepress/shared-utils": "^1.9.7",
     "http-server": "^14.1.0",
