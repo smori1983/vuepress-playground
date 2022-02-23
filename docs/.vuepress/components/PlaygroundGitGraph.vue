@@ -7,6 +7,7 @@
 <script>
 import {
   templateExtend,
+  MergeStyle,
   TemplateName,
 } from '@gitgraph/core';
 
@@ -19,12 +20,21 @@ export default {
     const container = document.getElementById('graph-container');
 
     const customTemplate = templateExtend(TemplateName.Metro, {
+      branch: {
+        lineWidth: 5,
+        mergeStyle: MergeStyle.Bezier,
+        spacing: 40,
+      },
       commit: {
         message: {
           displayAuthor: false,
           displayHash: false,
-        }
-      }
+        },
+        dot: {
+          size: 10,
+        },
+        spacing: 40,
+      },
     });
 
     const graph = createGitgraph(container, {
