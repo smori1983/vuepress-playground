@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="graph-container"></div>
+    <div ref="graph-container"></div>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ import {
 
 export default {
   mounted() {
-    const container = document.getElementById('graph-container');
+    const container = this.$refs['graph-container'];
 
     const customTemplate = templateExtend(TemplateName.Metro, {
       branch: {
