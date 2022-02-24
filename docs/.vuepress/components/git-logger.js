@@ -58,10 +58,10 @@ class GitLogger {
    * @private
    */
   _createMerge(action) {
-    const target = this._branches.get(action.target);
+    const branch = this._branches.get(action.branch);
     const into = this._branches.get(action.into);
 
-    into.merge(target);
+    into.merge(branch);
   }
 }
 

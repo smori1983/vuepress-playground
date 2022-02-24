@@ -38,7 +38,7 @@ export default {
     },
     {
       "type": "merge",
-      "target": "feature/1",
+      "branch": "feature/1",
       "into": "master"
     }
   ]
