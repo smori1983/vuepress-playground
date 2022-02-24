@@ -8,10 +8,12 @@ export default {
     },
     {
       "type": "branch:create",
+      "from": "master",
       "branch": "feature/1"
     },
     {
       "type": "branch:create",
+      "from": "master",
       "branch": "feature/2"
     },
     {

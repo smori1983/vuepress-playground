@@ -16,13 +16,12 @@ class GitLogger {
    * @param {Object} data
    */
   create(api, data) {
-    this._createBranch(api, {
-      branch: data.defaultBranch,
-    });
+    const b = api.branch(data.defaultBranch);
+    this._branches.set(data.defaultBranch, b);
 
     data.actions.forEach((action) => {
       if (action.type === 'branch:create') {
-        this._createBranch(api, action);
+        this._createBranch(action);
       }
       if (action.type === 'commit') {
         this._createCommit(action);
@@ -34,12 +33,12 @@ class GitLogger {
   }
 
   /**
-   * @param {GitgraphUserApi} api
    * @param {Object} action
    * @private
    */
-  _createBranch(api, action) {
-    const branch = api.branch(action.branch);
+  _createBranch(action) {
+    const from = this._branches.get(action.from);
+    const branch = from.branch(action.branch);
 
     this._branches.set(action.branch, branch);
   }
