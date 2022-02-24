@@ -37,7 +37,7 @@ class GitLogger {
    * @private
    */
   _createBranch(action) {
-    const from = this._branches.get(action.from);
+    const from = this._getBranch(action.from);
 
     this._registerBranch(from.branch(action.branch));
   }
@@ -47,7 +47,7 @@ class GitLogger {
    * @private
    */
   _createCommit(action) {
-    const branch = this._branches.get(action.branch);
+    const branch = this._getBranch(action.branch);
 
     branch.commit(action.message);
   }
@@ -57,8 +57,8 @@ class GitLogger {
    * @private
    */
   _createMerge(action) {
-    const branch = this._branches.get(action.branch);
-    const into = this._branches.get(action.into);
+    const branch = this._getBranch(action.branch);
+    const into = this._getBranch(action.into);
 
     into.merge(branch);
   }
@@ -69,6 +69,20 @@ class GitLogger {
    */
   _registerBranch(branch) {
     this._branches.set(branch.name, branch);
+  }
+
+  /**
+   * @param {string} name
+   * @returns {BranchUserApi}
+   * @throws {Error}
+   * @private
+   */
+  _getBranch(name) {
+    if (this._branches.has(name) === false) {
+      throw new Error('Branch not created: ' + name);
+    }
+
+    return this._branches.get(name);
   }
 }
 
