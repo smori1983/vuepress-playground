@@ -8,13 +8,13 @@ export default {
     },
     {
       "type": "branch:create",
-      "from": "master",
-      "branch": "feature/1"
+      "branch": "feature/1",
+      "from": "master"
     },
     {
       "type": "branch:create",
-      "from": "master",
-      "branch": "feature/2"
+      "branch": "feature/2",
+      "from": "master"
     },
     {
       "type": "commit",
