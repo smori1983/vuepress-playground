@@ -1,11 +1,12 @@
 /**
  * @typedef {import('@gitgraph/core/lib/user-api/gitgraph-user-api').GitgraphUserApi} GitgraphUserApi
+ * @typedef {import('@gitgraph/core/lib/user-api/branch-user-api').BranchUserApi} BranchUserApi
  */
 
 class GitLogger {
   constructor() {
     /**
-     * @type {Map<string, Object>}
+     * @type {Map<string, BranchUserApi>}
      * @private
      */
     this._branches = new Map();
@@ -16,8 +17,7 @@ class GitLogger {
    * @param {Object} data
    */
   create(api, data) {
-    const b = api.branch(data.defaultBranch);
-    this._branches.set(data.defaultBranch, b);
+    this._registerBranch(api.branch(data.defaultBranch));
 
     data.actions.forEach((action) => {
       if (action.type === 'branch:create') {
@@ -38,9 +38,8 @@ class GitLogger {
    */
   _createBranch(action) {
     const from = this._branches.get(action.from);
-    const branch = from.branch(action.branch);
 
-    this._branches.set(action.branch, branch);
+    this._registerBranch(from.branch(action.branch));
   }
 
   /**
@@ -62,6 +61,14 @@ class GitLogger {
     const into = this._branches.get(action.into);
 
     into.merge(branch);
+  }
+
+  /**
+   * @param {BranchUserApi} branch
+   * @private
+   */
+  _registerBranch(branch) {
+    this._branches.set(branch.name, branch);
   }
 }
 
