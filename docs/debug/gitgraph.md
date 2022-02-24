@@ -1,3 +1,5 @@
 # gitgraph
 
 <PlaygroundGitGraph/>
+
+<PlaygroundGitGraph2/>
