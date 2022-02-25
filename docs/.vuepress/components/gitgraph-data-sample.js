@@ -41,5 +41,30 @@ export default {
       branch: 'feature/1',
       into: 'master',
     },
+    {
+      type: 'tag',
+      branch: 'master',
+      tag: 'v1.0.0',
+    },
+    {
+      type: 'branch:create',
+      branch: 'hotfix/1',
+      from: 'master',
+    },
+    {
+      type: 'commit',
+      branch: 'hotfix/1',
+      message: '5',
+    },
+    {
+      type: 'merge',
+      branch: 'hotfix/1',
+      into: 'master',
+    },
+    {
+      type: 'tag',
+      branch: 'master',
+      tag: 'v1.0.1',
+    },
   ],
 };

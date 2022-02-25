@@ -56,6 +56,14 @@ export default {
     feature2.commit('4');
 
     master.merge(feature1);
+    master.tag('v1.0.0');
+
+    const hotfix1 = master.branch('hotfix/1');
+
+    hotfix1.commit('5');
+
+    master.merge(hotfix1);
+    master.tag('v1.0.1');
   },
 };
 </script>
