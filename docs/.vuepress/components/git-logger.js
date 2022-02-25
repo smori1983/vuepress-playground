@@ -29,6 +29,9 @@ class GitLogger {
       if (action.type === 'merge') {
         this._createMerge(action);
       }
+      if (action.type === 'tag') {
+        this._createTag(action);
+      }
     });
   }
 
@@ -61,6 +64,16 @@ class GitLogger {
     const into = this._getBranch(action.into);
 
     into.merge(branch);
+  }
+
+  /**
+   * @param {Object} action
+   * @private
+   */
+  _createTag(action) {
+    const branch = this._getBranch(action.branch);
+
+    branch.tag(action.tag);
   }
 
   /**
