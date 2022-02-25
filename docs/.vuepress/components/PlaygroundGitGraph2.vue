@@ -16,7 +16,7 @@ import {
 } from '@gitgraph/js';
 
 import GitLogger from './git-logger';
-import sampleData from './gitgraph-data-sample';
+import sampleData from './sample-data';
 
 export default {
   mounted() {
