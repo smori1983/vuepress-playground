@@ -1,6 +1,6 @@
 # gitgraph
 
-<PlaygroundGitGraph/>
+<PlaygroundGitGraph1/>
 
 <PlaygroundGitGraph2/>
 
