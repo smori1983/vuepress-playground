@@ -1,16 +1,14 @@
 <template>
   <div>
-    <div
-      class="graph-container"
-      ref="graph-container"
-    ></div>
-    <textarea
-      class="graph-editor"
-      rows="20"
-      cols="50"
-      v-model="input"
-      @keyup="render()"
-    ></textarea>
+    <div class="container-editor">
+      <textarea
+        v-model="input"
+        @keyup="render()"
+      ></textarea>
+    </div>
+    <div class="container-graph">
+      <div ref="graph"></div>
+    </div>
   </div>
 </template>
 
@@ -50,7 +48,7 @@ export default {
   },
 
   mounted() {
-    const container = this.$refs['graph-container'];
+    const container = this.$refs['graph'];
 
     const customTemplate = templateExtend(TemplateName.Metro, {
       branch: {
@@ -100,12 +98,16 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.graph-container {
-  width 55%
-  float left
+.container-editor {
+  margin-bottom 2rem
+
+  textarea {
+    display block
+    margin 0
+    min-width 100%
+    min-height 150px
+  }
 }
-.graph-editor {
-  width 40%
-  display block
+.container-graph {
 }
 </style>
