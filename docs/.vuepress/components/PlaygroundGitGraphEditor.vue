@@ -33,7 +33,18 @@ import {
 export default {
   data() {
     return {
-      input: '[option]\ndefaultBranch: master\n[log]\ngit commit -m \'initial commit\'\n',
+      input:
+        '[option]\n' +
+        'defaultBranch: master\n' +
+        '[log]\n' +
+        'git commit -m \'initial commit\'\n' +
+        'git commit -m \'1\'\n' +
+        'git checkout -b feature/1\n' +
+        'git commit -m \'2\'\n' +
+        'git commit -m \'3\'\n' +
+        'git checkout master\n' +
+        'git merge feature/1\n' +
+        'git tag v1.0.0\n',
       graph: null,
     };
   },
