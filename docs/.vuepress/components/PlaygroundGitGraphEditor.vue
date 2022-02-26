@@ -52,9 +52,9 @@ export default {
 
     const customTemplate = templateExtend(TemplateName.Metro, {
       branch: {
-        lineWidth: 5,
+        lineWidth: 2,
         mergeStyle: MergeStyle.Bezier,
-        spacing: 40,
+        spacing: 20,
       },
       commit: {
         message: {
@@ -62,7 +62,7 @@ export default {
           displayHash: false,
         },
         dot: {
-          size: 10,
+          size: 4,
         },
         spacing: 40,
       },
@@ -71,7 +71,6 @@ export default {
     this.graph = createGitgraph(container, {
       template: customTemplate,
       branchLabelOnEveryCommit: true,
-
       responsive: false,
     });
 
