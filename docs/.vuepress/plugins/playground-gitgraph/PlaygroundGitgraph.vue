@@ -72,10 +72,10 @@ export default {
       logger.create(graph, input);
     } catch (e) {
       this.error = sprintf(
-        '%s (line: %d, offset: %d)',
+        '%s (line: %d, column: %d)',
         e.message,
         e.location.start.line,
-        e.location.start.offset
+        e.location.start.column,
       );
       this.input = input;
       graph.clear();
