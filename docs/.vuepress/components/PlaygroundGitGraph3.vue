@@ -15,11 +15,23 @@ import {
   createGitgraph,
 } from '@gitgraph/js';
 
-import sampleInput from './sample-input';
-import { Format1GitLogger } from 'gitgraph-minigram';
+import {
+  Format1Parser,
+  GitLogger,
+} from 'gitgraph-minigram';
+
+import input from './sample-input';
 
 export default {
   mounted() {
+    const parser = new Format1Parser();
+
+    const parseResult = parser.parse(input);
+
+    if (!parseResult.parsed()) {
+      return;
+    }
+
     const container = this.$refs['graph-container'];
 
     const customTemplate = templateExtend(TemplateName.Metro, {
@@ -43,17 +55,12 @@ export default {
     const graph = createGitgraph(container, {
       template: customTemplate,
       branchLabelOnEveryCommit: true,
-
       responsive: false,
     });
 
-    const logger = new Format1GitLogger();
+    const logger = new GitLogger();
 
-    try {
-      logger.create(graph, sampleInput);
-    } catch (e) {
-      console.log(e.message);
-    }
+    logger.create(graph, parseResult.getParseData());
   },
 };
 </script>

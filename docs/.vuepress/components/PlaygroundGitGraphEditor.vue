@@ -32,7 +32,7 @@ import {
 } from '@gitgraph/js';
 
 import {
-  Format1GitLogger,
+  GitLogger,
   Format1Parser,
 } from 'gitgraph-minigram';
 
@@ -89,18 +89,17 @@ export default {
   methods: {
     render() {
       const parser = new Format1Parser();
-      const logger = new Format1GitLogger();
+      const logger = new GitLogger();
 
-      try {
-        const parsed = parser.parse(this.input);
+      const parseResult = parser.parse(this.input);
 
+      if (parseResult.parsed()) {
         this.graph.clear();
+        this.ast = JSON.stringify(parseResult.getParseData(), null, 2);
 
-        this.ast = JSON.stringify(parsed, null, 2);
-
-        logger.create(this.graph, this.input);
-      } catch (e) {
-        console.log(e.message);
+        logger.create(this.graph, parseResult.getParseData());
+      } else {
+        console.log(parseResult.getError().message);
       }
     },
   },
