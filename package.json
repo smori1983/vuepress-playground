@@ -15,7 +15,7 @@
     "@gitgraph/js": "^1.4.0",
     "@vuepress/plugin-back-to-top": "^1.9.7",
     "@vuepress/shared-utils": "^1.9.7",
-    "gitgraph-minigram": "github:smori1983/gitgraph-minigram#18d1dcad4a6e65204fb851548c324c7658e6d791",
+    "gitgraph-minigram": "github:smori1983/gitgraph-minigram#8f34e9230be16b1dd34ccc6b9df715f0fa3439c9",
     "http-server": "^14.1.0",
     "sprintf-js": "^1.1.2",
     "vue-tabs-component": "^1.5.0",
