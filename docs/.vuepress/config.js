@@ -16,6 +16,7 @@ module.exports = {
           '/debug/auto_link_label.md',
           '/debug/gitgraph.md',
           '/debug/gitgraph_editor.md',
+          '/debug/gitgraph_demo.md',
         ],
       },
       {
@@ -67,6 +68,8 @@ module.exports = {
       hostname: 'https://vuepress-playground.example.com',
       exclude: ['/404.html'],
     }],
+
+    [require('./plugins/playground-gitgraph')],
 
     [require('./plugins/playground-table-search')],
   ],
