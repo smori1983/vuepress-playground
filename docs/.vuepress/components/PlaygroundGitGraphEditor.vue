@@ -95,7 +95,7 @@ export default {
 
       if (parseResult.parsed()) {
         this.graph.clear();
-        this.ast = JSON.stringify(parseResult.getParseData(), null, 2);
+        this.ast = JSON.stringify(parseResult.getParseData().dump(), null, 2);
 
         logger.create(this.graph, parseResult.getParseData());
       } else {
