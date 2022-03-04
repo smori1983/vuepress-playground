@@ -18,13 +18,21 @@
 
 <script>
 import { sprintf } from 'sprintf-js';
+
 import {
   MergeStyle,
   templateExtend,
   TemplateName,
-} from "@gitgraph/core";
-import { createGitgraph } from "@gitgraph/js";
-import { Format1GitLogger } from 'gitgraph-minigram';
+} from '@gitgraph/core';
+
+import {
+  createGitgraph,
+} from '@gitgraph/js';
+
+import {
+  Format1Parser,
+  GitLogger,
+} from 'gitgraph-minigram';
 
 export default {
   data() {
@@ -39,46 +47,47 @@ export default {
       return;
     }
 
+    const parser = new Format1Parser();
+    const logger = new GitLogger();
+
     const input = this.$slots.default[0].text;
+    const parseResult = parser.parse(input);
 
-    const container = this.$refs['graph'];
-    const customTemplate = templateExtend(TemplateName.Metro, {
-      branch: {
-        lineWidth: 2,
-        mergeStyle: MergeStyle.Bezier,
-        spacing: 20,
-      },
-      commit: {
-        message: {
-          displayAuthor: false,
-          displayHash: false,
+    if (parseResult.parsed()) {
+      const container = this.$refs['graph'];
+      const customTemplate = templateExtend(TemplateName.Metro, {
+        branch: {
+          lineWidth: 2,
+          mergeStyle: MergeStyle.Bezier,
+          spacing: 20,
         },
-        dot: {
-          size: 4,
+        commit: {
+          message: {
+            displayAuthor: false,
+            displayHash: false,
+          },
+          dot: {
+            size: 4,
+          },
+          spacing: 40,
         },
-        spacing: 40,
-      },
-    });
+      });
 
-    const graph = createGitgraph(container, {
-      template: customTemplate,
-      branchLabelOnEveryCommit: true,
-      responsive: false,
-    });
+      const graph = createGitgraph(container, {
+        template: customTemplate,
+        branchLabelOnEveryCommit: true,
+        responsive: false,
+      });
 
-    const logger = new Format1GitLogger();
-
-    try {
-      logger.create(graph, input);
-    } catch (e) {
+      logger.create(graph, parseResult.getParseData());
+    } else {
       this.error = sprintf(
         '%s (line: %d, column: %d)',
-        e.message,
-        e.location.start.line,
-        e.location.start.column,
+        parseResult.getError().message,
+        parseResult.getError().location.start.line,
+        parseResult.getError().location.start.column,
       );
       this.input = input;
-      graph.clear();
     }
   },
 };
