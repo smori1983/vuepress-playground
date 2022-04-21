@@ -62,14 +62,16 @@ module.exports = {
       onlyFirstAndLastCommit: false,
     }],
 
+    ['gitgraph-minigram', {
+      marker: 'gitgraph',
+    }],
+
     ['keyboard-event-debug'],
 
     ['sitemap', {
       hostname: 'https://vuepress-playground.example.com',
       exclude: ['/404.html'],
     }],
-
-    [require('./plugins/playground-gitgraph')],
 
     [require('./plugins/playground-table-search')],
   ],
