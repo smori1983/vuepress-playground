@@ -6,6 +6,10 @@
         v-model="input"
         @keyup="render()"
       ></textarea>
+      <div
+        class="error-message"
+        v-if="errorMessage"
+      >{{ errorMessage }}</div>
     </div>
     <div class="box container-result">
       <div class="container-graph">
@@ -21,24 +25,23 @@
 </template>
 
 <script>
-import {
-  templateExtend,
-  MergeStyle,
-  TemplateName,
-} from '@gitgraph/core';
-
-import {
-  createGitgraph,
-} from '@gitgraph/js';
-
+import { sprintf } from 'sprintf-js';
 import {
   GitLogger,
-  Format1Parser,
+  Format2Parser,
 } from 'gitgraph-minigram';
 
+import graphDefaultMixin from 'vuepress-plugin-gitgraph-minigram/src/components/mixin/graphDefault';
+
 export default {
+  mixins: [
+    graphDefaultMixin,
+  ],
+
   data() {
     return {
+      parser: null,
+      logger: null,
       input:
         '[option]\n' +
         'defaultBranch: master\n' +
@@ -51,55 +54,49 @@ export default {
         'git checkout master\n' +
         'git merge feature/1\n' +
         'git tag v1.0.0\n',
-      graph: null,
+      errorMessage: '',
       ast: '',
+      graph: null,
     };
   },
 
   mounted() {
+    this.parser = new Format2Parser();
+    this.logger = new GitLogger();
+
     const container = this.$refs['graph'];
-
-    const customTemplate = templateExtend(TemplateName.Metro, {
-      branch: {
-        lineWidth: 2,
-        mergeStyle: MergeStyle.Bezier,
-        spacing: 20,
-      },
-      commit: {
-        message: {
-          displayAuthor: false,
-          displayHash: false,
-        },
-        dot: {
-          size: 4,
-        },
-        spacing: 40,
-      },
-    });
-
-    this.graph = createGitgraph(container, {
-      template: customTemplate,
-      branchLabelOnEveryCommit: true,
-      responsive: false,
-    });
+    this.graph = this.createGraph(container);
 
     this.render();
   },
 
   methods: {
     render() {
-      const parser = new Format1Parser();
-      const logger = new GitLogger();
+      this.errorMessage = '';
+      this.ast = '';
+      this.graph.clear();
 
-      const parseResult = parser.parse(this.input);
+      const parseResult = this.parser.parse(this.input);
 
-      if (parseResult.parsed()) {
-        this.graph.clear();
-        this.ast = JSON.stringify(parseResult.getParseData().dump(), null, 2);
+      if (!parseResult.parsed()) {
+        const parseError = parseResult.getError();
 
-        logger.create(this.graph, parseResult.getParseData());
-      } else {
-        console.log(parseResult.getError().message);
+        this.errorMessage = sprintf(
+          '%s (line: %d)',
+          parseError.message,
+          parseError.location.start.line,
+        );
+
+        return;
+      }
+
+      this.ast = JSON.stringify(parseResult.getParseData().dump(), null, 2);
+
+      try {
+        this.logger.create(this.graph, parseResult.getParseData());
+      } catch (e) {
+        this.errorMessage = e.message;
+        this.ast = '';
       }
     },
   },
@@ -125,6 +122,9 @@ $gitgraphFontSize = 15px
     min-width 100%
     min-height 150px
     font-size $gitgraphFontSize
+  }
+  .error-message {
+    color: red;
   }
 }
 .container-result {
