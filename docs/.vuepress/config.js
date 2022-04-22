@@ -14,7 +14,6 @@ module.exports = {
         children: [
           '/debug/site_pages.md',
           '/debug/auto_link_label.md',
-          '/debug/gitgraph.md',
           '/debug/gitgraph_editor.md',
           '/debug/gitgraph_demo.md',
         ],
