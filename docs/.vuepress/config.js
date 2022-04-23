@@ -33,7 +33,6 @@ module.exports = {
         collapsable: false,
         path: '/misc/',
         children: [
-          '/misc/components/',
           '/misc/keyboard_event.md',
           '/misc/table_search.md',
         ],
@@ -46,12 +45,6 @@ module.exports = {
 
     ['auto-link-label', {
       marker: '!',
-    }],
-
-    ['component-catalog', {
-      distDirPrefix: 'misc/components',
-      include: [],
-      exclude: [],
     }],
 
     ['git-info', {
