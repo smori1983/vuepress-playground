@@ -19,15 +19,6 @@ module.exports = {
         ],
       },
       {
-        title: 'サンプルページ',
-        collapsable: false,
-        children: [
-          '/parsing/parse_tree.md',
-          '/parsing/parser_generator.md',
-          '/parsing/lexical_analysis.md',
-        ],
-      },
-      {
         title: '未分類',
         collapsable: false,
         path: '/misc/',
