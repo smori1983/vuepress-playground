@@ -22,9 +22,6 @@ module.exports = {
         title: 'サンプルページ',
         collapsable: false,
         children: [
-          '/country/india.md',
-          '/country/nepal.md',
-          '/country/sri_lanka.md',
           '/parsing/parse_tree.md',
           '/parsing/parser_generator.md',
           '/parsing/lexical_analysis.md',
