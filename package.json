@@ -20,7 +20,7 @@
     "vuepress": "^1.9.7",
     "vuepress-plugin-auto-link-label": "^0.1.0",
     "vuepress-plugin-git-info": "^0.1.0",
-    "vuepress-plugin-gitgraph-minigram": "github:smori1983/vuepress-plugin-gitgraph-minigram#5d19558d82669d3b8a3ae006cf0a19d303c51b67",
+    "vuepress-plugin-gitgraph-minigram": "^0.2.1",
     "vuepress-plugin-keyboard-event-debug": "^1.0.1",
     "vuepress-plugin-md-enhance": "^1.28.0",
     "vuepress-plugin-sitemap": "^2.3.1",
