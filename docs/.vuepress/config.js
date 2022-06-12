@@ -66,6 +66,8 @@ module.exports = {
     //}],
 
     [require('./plugins/playground-table-search')],
+
+    [require('./plugins/playground-release-diary')],
   ],
 
   markdown: {
