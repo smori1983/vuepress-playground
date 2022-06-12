@@ -9,21 +9,27 @@ module.exports = {
   themeConfig: {
     sidebar: [
       {
-        title: 'デバッグ',
+        title: 'Debug',
         collapsable: false,
         children: [
           '/debug/site_pages.md',
-          '/debug/auto_link_label.md',
-          '/debug/gitgraph_editor.md',
-          '/debug/gitgraph_demo.md',
         ],
       },
       {
-        title: '未分類',
+        title: 'Demo',
+        collapsable: false,
+        children: [
+          '/demo/keyboard_event.md',
+          '/demo/auto_link_label.md',
+          '/demo/gitgraph_editor.md',
+          '/demo/gitgraph_demo.md',
+        ],
+      },
+      {
+        title: 'Misc',
         collapsable: false,
         path: '/misc/',
         children: [
-          '/misc/keyboard_event.md',
           '/misc/table_search.md',
         ],
       },

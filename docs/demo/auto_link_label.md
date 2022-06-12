@@ -5,4 +5,4 @@
 - [!](/debug/site_pages.md)
 - [!](/misc/)
 - [!](/misc/README.md)
-- [!](/misc/keyboard_event.md)
+- [!](/demo/keyboard_event.md)
