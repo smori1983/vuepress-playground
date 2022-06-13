@@ -1,4 +1,9 @@
+const path = require('path');
+
 module.exports = (options, ctx) => ({
+  enhanceAppFiles: [
+    path.resolve(__dirname, 'enhanceAppFile.js'),
+  ],
   clientDynamicModules() {
     const data = [];
 
