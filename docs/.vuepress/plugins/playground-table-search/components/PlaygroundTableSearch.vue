@@ -115,7 +115,7 @@ export default {
         return true;
       }
 
-      return name.toLowerCase().indexOf(this.form.name) >= 0;
+      return name.toLowerCase().indexOf(this.form.name.toLowerCase()) >= 0;
     },
 
     checkDateFrom(date) {
