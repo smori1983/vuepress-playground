@@ -1,6 +1,7 @@
 /**
  * @typedef {import('vuepress-types').Context} Context
  * @typedef {import('vuepress-types').Page} Page
+ * @typedef {import('vuepress-types').PageOptions} PageOptions
  * @typedef {import('vuepress-types').PluginOptionAPI} PluginOptionAPI
  */
 
@@ -25,22 +26,7 @@ module.exports = (options, ctx) => {
       container.add(date, name, version, path);
     });
 
-    const indexPageLines = [];
-    indexPageLines.push('# Release list');
-    indexPageLines.push('');
-    container.getDateList().forEach((date) => {
-      indexPageLines.push(sprintf(
-        '- [%s](/%s/%s/)',
-        date,
-        pathPrefix,
-        date.replace(/\//g, '')
-      ));
-    });
-
-    result.push({
-      path: sprintf('/%s/', pathPrefix),
-      content: indexPageLines.join('\n'),
-    });
+    result.push(prepareIndexPage(container));
 
     container.getDateList().forEach((date) => {
       const dateDigits = date.replace(/\//g, '');
@@ -64,6 +50,31 @@ module.exports = (options, ctx) => {
     });
 
     return result;
+  };
+
+  /**
+   * @param {PackageContainer} container
+   * @return {Partial<PageOptions>}
+   */
+  const prepareIndexPage = (container) => {
+    const fileLines = [];
+
+    fileLines.push('# Release list');
+    fileLines.push('');
+
+    container.getDateList().forEach((date) => {
+      fileLines.push(sprintf(
+        '- [%s](/%s/%s/)',
+        date,
+        pathPrefix,
+        date.replace(/\//g, '')
+      ));
+    });
+
+    return {
+      path: sprintf('/%s/', pathPrefix),
+      content: fileLines.join('\n'),
+    };
   };
 
   /**
