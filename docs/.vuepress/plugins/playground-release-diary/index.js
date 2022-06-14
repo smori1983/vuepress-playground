@@ -19,12 +19,7 @@ module.exports = (options, ctx) => {
   const prepareDiaryPages = async () => {
     const result = [];
 
-    const container = new PackageContainer();
-    ctx.pages.filter(isTargetPage).forEach((page) => {
-      const {date, name, version} = page.frontmatter.package_release;
-      const path = page.regularPath;
-      container.add(date, name, version, path);
-    });
+    const container = prepareContainer(ctx);
 
     result.push(prepareIndexPage(container));
 
@@ -34,6 +29,35 @@ module.exports = (options, ctx) => {
 
     return result;
   };
+
+  /**
+   * @param {Context} ctx
+   * @return {PackageContainer}
+   */
+  const prepareContainer = (ctx) => {
+    const container = new PackageContainer();
+
+    ctx.pages.filter(isTargetPage).forEach((page) => {
+      const {date, name, version} = page.frontmatter.package_release;
+      const path = page.regularPath;
+      container.add(date, name, version, path);
+    });
+
+    return container;
+  };
+
+  /**
+   * @param {Page} page
+   * @return {boolean}
+   */
+  const isTargetPage = (page) => {
+    return (
+      page.frontmatter.package_release &&
+      page.frontmatter.package_release.date &&
+      page.frontmatter.package_release.name &&
+      page.frontmatter.package_release.version
+    );
+  }
 
   /**
    * @param {PackageContainer} container
@@ -85,19 +109,6 @@ module.exports = (options, ctx) => {
       content: fileLines.join('\n'),
     };
   };
-
-  /**
-   * @param {Page} page
-   * @return {boolean}
-   */
-  const isTargetPage = (page) => {
-    return (
-      page.frontmatter.package_release &&
-      page.frontmatter.package_release.date &&
-      page.frontmatter.package_release.name &&
-      page.frontmatter.package_release.version
-    );
-  }
 
   return {
     name: 'playground-release-diary',
