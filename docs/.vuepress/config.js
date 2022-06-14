@@ -43,17 +43,17 @@ module.exports = {
       marker: '!',
     }],
 
-    ['git-info', {
-      useGlobalUi: true,
-    }],
+    //['git-info', {
+    //  useGlobalUi: true,
+    //}],
 
-    ['git-log', {
-      formatTime: (timestamp, lang) => {
-        return timestamp;
-      },
-      additionalArgs: '--no-merges',
-      onlyFirstAndLastCommit: false,
-    }],
+    //['git-log', {
+    //  formatTime: (timestamp, lang) => {
+    //    return timestamp;
+    //  },
+    //  additionalArgs: '--no-merges',
+    //  onlyFirstAndLastCommit: false,
+    //}],
 
     ['gitgraph-minigram', {
       marker: 'gitgraph',
