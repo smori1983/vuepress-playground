@@ -30,6 +30,7 @@ module.exports = {
         path: '/misc/',
         children: [
           '/misc/table_search.md',
+          '/release/',
         ],
       },
     ],
