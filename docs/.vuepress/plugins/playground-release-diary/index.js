@@ -71,12 +71,7 @@ module.exports = (options, ctx) => {
     fileLines.push('');
 
     container.getDateList().forEach((date) => {
-      fileLines.push(sprintf(
-        '- [%s](/%s/%s/)',
-        date,
-        pathPrefix,
-        dateForPagePath(date)
-      ));
+      fileLines.push(sprintf('- [%s](/%s/%s/)', date, pathPrefix, dateForPagePath(date)));
     });
 
     return {
@@ -98,12 +93,7 @@ module.exports = (options, ctx) => {
     fileLines.push(sprintf('Back to [Release list](/%s/)', pathPrefix));
 
     container.getByDate(date).forEach((pkg) => {
-      fileLines.push(sprintf(
-        '- [%s (%s)](%s)',
-        pkg.name,
-        pkg.version,
-        pkg.path
-      ));
+      fileLines.push(sprintf('- [%s (%s)](%s)', pkg.name, pkg.version, pkg.path));
     });
 
     return {
