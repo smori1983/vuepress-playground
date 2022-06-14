@@ -26,7 +26,7 @@ module.exports = (options, ctx) => {
     });
 
     const indexPageLines = [];
-    indexPageLines.push('# Release date list');
+    indexPageLines.push('# Release list');
     indexPageLines.push('');
     container.getDateList().forEach((date) => {
       indexPageLines.push(sprintf(
