@@ -30,6 +30,7 @@ module.exports = {
         path: '/misc/',
         children: [
           '/misc/table_search.md',
+          '/release/',
         ],
       },
     ],
@@ -66,6 +67,8 @@ module.exports = {
     //}],
 
     [require('./plugins/playground-table-search')],
+
+    [require('./plugins/playground-release-diary')],
   ],
 
   markdown: {
