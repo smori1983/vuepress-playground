@@ -94,6 +94,7 @@ module.exports = (options, ctx) => {
 
     fileLines.push(sprintf('# Release list (%s)', date));
     fileLines.push('');
+    fileLines.push(sprintf('Back to [Release list](/%s/)', pathPrefix));
 
     container.getByDate(date).forEach((pkg) => {
       fileLines.push(sprintf(
