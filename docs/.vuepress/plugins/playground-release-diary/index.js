@@ -54,6 +54,7 @@ module.exports = (options, ctx) => {
     return (
       page.frontmatter.package_release &&
       page.frontmatter.package_release.date &&
+      /^\d{4}\/\d{2}\/\d{2}$/.test(page.frontmatter.package_release.date) &&
       page.frontmatter.package_release.name &&
       page.frontmatter.package_release.version
     );
