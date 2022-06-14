@@ -29,24 +29,7 @@ module.exports = (options, ctx) => {
     result.push(prepareIndexPage(container));
 
     container.getDateList().forEach((date) => {
-      const dateDigits = date.replace(/\//g, '');
-
-      const datePageLines = [];
-      datePageLines.push(sprintf('# Release list (%s)', date));
-      datePageLines.push('');
-      container.getByDate(date).forEach((pkg) => {
-        datePageLines.push(sprintf(
-          '- [%s (%s)](%s)',
-          pkg.name,
-          pkg.version,
-          pkg.path
-        ));
-      });
-
-      result.push({
-        path: sprintf('/%s/%s/', pathPrefix, dateDigits),
-        content: datePageLines.join('\n'),
-      })
+      result.push(prepareDatePage(container, date));
     });
 
     return result;
@@ -73,6 +56,32 @@ module.exports = (options, ctx) => {
 
     return {
       path: sprintf('/%s/', pathPrefix),
+      content: fileLines.join('\n'),
+    };
+  };
+
+  /**
+   * @param {PackageContainer} container
+   * @param {string} date
+   * @return {Partial<PageOptions>}
+   */
+  const prepareDatePage = (container, date) => {
+    const fileLines = [];
+
+    fileLines.push(sprintf('# Release list (%s)', date));
+    fileLines.push('');
+
+    container.getByDate(date).forEach((pkg) => {
+      fileLines.push(sprintf(
+        '- [%s (%s)](%s)',
+        pkg.name,
+        pkg.version,
+        pkg.path
+      ));
+    });
+
+    return {
+      path: sprintf('/%s/%s/', pathPrefix, date.replace(/\//g, '')),
       content: fileLines.join('\n'),
     };
   };
