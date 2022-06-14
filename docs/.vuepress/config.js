@@ -61,10 +61,10 @@ module.exports = {
 
     ['keyboard-event-debug'],
 
-    ['sitemap', {
-      hostname: 'https://vuepress-playground.example.com',
-      exclude: ['/404.html'],
-    }],
+    //['sitemap', {
+    //  hostname: 'https://vuepress-playground.example.com',
+    //  exclude: ['/404.html'],
+    //}],
 
     [require('./plugins/playground-table-search')],
   ],
