@@ -75,7 +75,7 @@ module.exports = (options, ctx) => {
         '- [%s](/%s/%s/)',
         date,
         pathPrefix,
-        date.replace(/\//g, '')
+        dateForPagePath(date)
       ));
     });
 
@@ -107,9 +107,19 @@ module.exports = (options, ctx) => {
     });
 
     return {
-      path: sprintf('/%s/%s/', pathPrefix, date.replace(/\//g, '')),
+      path: sprintf('/%s/%s/', pathPrefix, dateForPagePath(date)),
       content: fileLines.join('\n'),
     };
+  };
+
+  /**
+   * Convert 'YYYY/MM/DD' to 'YYYYMMDD'.
+   *
+   * @param {string} date
+   * @return {string}
+   */
+  const dateForPagePath = (date) => {
+    return date.replace(/\//g, '');
   };
 
   return {
