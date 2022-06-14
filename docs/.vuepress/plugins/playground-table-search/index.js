@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = (options, ctx) => ({
+  name: 'playground-table-search',
   enhanceAppFiles: [
     path.resolve(__dirname, 'enhanceAppFile.js'),
   ],
