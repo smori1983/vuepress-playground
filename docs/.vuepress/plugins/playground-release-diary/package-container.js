@@ -46,16 +46,9 @@ class PackageContainer {
    * @return {PackageInfo[]}
    */
   getByDate(date) {
-    /**
-     * @type {PackageInfo[]}
-     */
-    const result = [];
-
-    this._packages.forEach((pkg) => {
-      if (pkg.date === date) {
-        result.push(pkg);
-      }
-    });
+    const result = this._packages.filter((pkg) => {
+      return pkg.date === date;
+    })
 
     result.sort((a, b) => {
       return a.name <= b.name ? -1 : 1;
