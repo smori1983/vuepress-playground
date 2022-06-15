@@ -56,6 +56,44 @@ class PackageContainer {
 
     return result;
   }
+
+  /**
+   * @return {string[]}
+   */
+  getNameList() {
+    /**
+     * @type {Set<string>}
+     */
+    const names = new Set();
+
+    this._packages.forEach((pkg) => {
+      names.add(pkg.name);
+    });
+
+    const result = Array.from(names);
+
+    result.sort((a, b) => {
+      return a <= b ? -1 : 1;
+    });
+
+    return result;
+  }
+
+  /**
+   * @param {string} name
+   * @return {PackageInfo[]}
+   */
+  getByName(name) {
+    const result = this._packages.filter((pkg) => {
+      return pkg.name === name;
+    });
+
+    result.sort((a, b) => {
+      return a.version <= b.version ? 1 : -1;
+    });
+
+    return result;
+  }
 }
 
 module.exports = PackageContainer;

@@ -27,6 +27,10 @@ module.exports = (options, ctx) => {
       result.push(prepareDatePage(container, date));
     });
 
+    container.getNameList().forEach((name) => {
+      result.push(prepareNamePage(container, name));
+    })
+
     return result;
   };
 
@@ -70,8 +74,16 @@ module.exports = (options, ctx) => {
     fileLines.push('# Release list');
     fileLines.push('');
 
+    fileLines.push('## By date');
+    fileLines.push('');
     container.getDateList().forEach((date) => {
       fileLines.push(sprintf('- [%s](/%s/%s/)', date, pathPrefix, dateForPagePath(date)));
+    });
+
+    fileLines.push('## By name');
+    fileLines.push('');
+    container.getNameList().forEach((name) => {
+      fileLines.push(sprintf('- [%s](/%s/%s/)', name, pathPrefix, name));
     });
 
     return {
@@ -98,6 +110,28 @@ module.exports = (options, ctx) => {
 
     return {
       path: sprintf('/%s/%s/', pathPrefix, dateForPagePath(date)),
+      content: fileLines.join('\n'),
+    };
+  };
+
+  /**
+   * @param {PackageContainer} container
+   * @param {string} name
+   * @return {Partial<PageOptions>}
+   */
+  const prepareNamePage = (container, name) => {
+    const fileLines = [];
+
+    fileLines.push(sprintf('# Release list (%s)', name));
+    fileLines.push('');
+    fileLines.push(sprintf('Back to [Release list](/%s/)', pathPrefix));
+
+    container.getByName(name).forEach((pkg) => {
+      fileLines.push(sprintf('- [%s (%s)](%s)', pkg.version, pkg.date, pkg.path));
+    });
+
+    return {
+      path: sprintf('/%s/%s/', pathPrefix, name),
       content: fileLines.join('\n'),
     };
   };
