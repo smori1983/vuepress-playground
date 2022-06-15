@@ -56,6 +56,22 @@ class PackageContainer {
 
     return result;
   }
+
+  /**
+   * @param {string} name
+   * @return {PackageInfo[]}
+   */
+  getByName(name) {
+    const result = this._packages.filter((pkg) => {
+      return pkg.name === name;
+    });
+
+    result.sort((a, b) => {
+      return a.version <= b.version ? 1 : -1;
+    });
+
+    return result;
+  }
 }
 
 module.exports = PackageContainer;
