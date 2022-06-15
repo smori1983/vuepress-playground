@@ -58,6 +58,28 @@ class PackageContainer {
   }
 
   /**
+   * @return {string[]}
+   */
+  getNameList() {
+    /**
+     * @type {Set<string>}
+     */
+    const names = new Set();
+
+    this._packages.forEach((pkg) => {
+      names.add(pkg.name);
+    });
+
+    const result = Array.from(names);
+
+    result.sort((a, b) => {
+      return a <= b ? -1 : 1;
+    });
+
+    return result;
+  }
+
+  /**
    * @param {string} name
    * @return {PackageInfo[]}
    */
