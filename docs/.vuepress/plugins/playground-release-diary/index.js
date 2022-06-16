@@ -5,6 +5,7 @@
  * @typedef {import('vuepress-types').PluginOptionAPI} PluginOptionAPI
  */
 
+const path = require('path');
 const sprintf = require('sprintf-js').sprintf;
 const PackageContainer = require('./package-container');
 
@@ -148,6 +149,17 @@ module.exports = (options, ctx) => {
 
   return {
     name: 'playground-release-diary',
+
+    enhanceAppFiles: [
+      path.resolve(__dirname, 'enhanceAppFile.js'),
+    ],
+
+    chainMarkdown(config) {
+      config
+        .plugin('vuepress-plugin-playground-release-diary')
+        .use(require('./markdown-it-plugin'));
+    },
+
     async additionalPages() {
       return await prepareDiaryPages();
     }
