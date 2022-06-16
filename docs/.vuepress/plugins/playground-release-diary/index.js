@@ -74,18 +74,7 @@ module.exports = (options, ctx) => {
 
     fileLines.push('# Release list');
     fileLines.push('');
-
-    fileLines.push('## By date');
-    fileLines.push('');
-    container.getDateList().forEach((date) => {
-      fileLines.push(sprintf('- [%s](/%s/%s/)', date, pathPrefix, dateForPagePath(date)));
-    });
-
-    fileLines.push('## By name');
-    fileLines.push('');
-    container.getNameList().forEach((name) => {
-      fileLines.push(sprintf('- [%s](/%s/%s/)', name, pathPrefix, name));
-    });
+    fileLines.push('<PlaygroundReleaseDiaryIndex/>');
 
     return {
       path: sprintf('/%s/', pathPrefix),
