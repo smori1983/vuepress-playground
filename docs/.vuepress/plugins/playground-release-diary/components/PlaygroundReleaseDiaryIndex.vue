@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Release list</h1>
     <tabs
       :cache-lifetime="-1"
       :options="tabsOptions"

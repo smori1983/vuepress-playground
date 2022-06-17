@@ -22,7 +22,7 @@ module.exports = (options, ctx) => {
 
     const container = prepareContainer(ctx);
 
-    result.push(prepareIndexPage(container));
+    result.push(prepareIndexPage());
 
     container.getDateList().forEach((date) => {
       result.push(prepareDatePage(container, date));
@@ -66,19 +66,12 @@ module.exports = (options, ctx) => {
   }
 
   /**
-   * @param {PackageContainer} container
    * @return {Partial<PageOptions>}
    */
-  const prepareIndexPage = (container) => {
-    const fileLines = [];
-
-    fileLines.push('# Release list');
-    fileLines.push('');
-    fileLines.push('<PlaygroundReleaseDiaryIndex/>');
-
+  const prepareIndexPage = () => {
     return {
       path: sprintf('/%s/', pathPrefix),
-      content: fileLines.join('\n'),
+      content: '<PlaygroundReleaseDiaryIndex/>',
     };
   };
 
