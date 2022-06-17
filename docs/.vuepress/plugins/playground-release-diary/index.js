@@ -94,19 +94,9 @@ module.exports = (options, ctx) => {
    * @return {Partial<PageOptions>}
    */
   const prepareNamePage = (container, name) => {
-    const fileLines = [];
-
-    fileLines.push(sprintf('# Release list (%s)', name));
-    fileLines.push('');
-    fileLines.push(sprintf('Back to [Release list](/%s/)', pathPrefix));
-
-    container.getByName(name).forEach((pkg) => {
-      fileLines.push(sprintf('- [%s (%s)](%s)', pkg.version, pkg.date, pkg.path));
-    });
-
     return {
       path: sprintf('/%s/%s/', pathPrefix, name),
-      content: fileLines.join('\n'),
+      content: sprintf('<PlaygroundReleaseDiaryNameIndex name="%s"/>', escapeHtml(name)),
     };
   };
 
