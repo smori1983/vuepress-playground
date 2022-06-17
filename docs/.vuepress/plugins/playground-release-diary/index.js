@@ -6,6 +6,7 @@
  */
 
 const path = require('path');
+const escapeHtml = require('escape-html');
 const sprintf = require('sprintf-js').sprintf;
 const PackageContainer = require('./package-container');
 
@@ -81,19 +82,9 @@ module.exports = (options, ctx) => {
    * @return {Partial<PageOptions>}
    */
   const prepareDatePage = (container, date) => {
-    const fileLines = [];
-
-    fileLines.push(sprintf('# Release list (%s)', date));
-    fileLines.push('');
-    fileLines.push(sprintf('Back to [Release list](/%s/)', pathPrefix));
-
-    container.getByDate(date).forEach((pkg) => {
-      fileLines.push(sprintf('- [%s (%s)](%s)', pkg.name, pkg.version, pkg.path));
-    });
-
     return {
       path: sprintf('/%s/%s/', pathPrefix, dateForPagePath(date)),
-      content: fileLines.join('\n'),
+      content: sprintf('<PlaygroundReleaseDiaryDateIndex date="%s"/>', escapeHtml(date)),
     };
   };
 
