@@ -2,8 +2,8 @@
   <div v-if="shouldShow">
     <hr>
     <ul>
-      <li>Back to <a :href="linkToDate">Release list ({{ date }})</a></li>
-      <li>Back to <a :href="linkToName">Release list ({{ name }})</a></li>
+      <li>Back to <router-link :to="linkToDate">Release list ({{ date }})</router-link></li>
+      <li>Back to <router-link :to="linkToName">Release list ({{ name }})</router-link></li>
     </ul>
   </div>
 </template>

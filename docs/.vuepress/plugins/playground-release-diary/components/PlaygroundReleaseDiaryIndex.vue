@@ -7,14 +7,14 @@
       <tab id="tab-by-date" name="By date">
         <ul>
           <li v-for="date in dateList">
-            <a :href="linkForDate(date)">{{ date }}</a>
+            <router-link :to="linkForDate(date)">{{ date }}</router-link>
           </li>
         </ul>
       </tab>
       <tab id="tab-by-name" name="By name">
         <ul>
           <li v-for="name in nameList">
-            <a :href="linkForName(name)">{{ name }}</a>
+            <router-link :to="linkForName(name)">{{ name }}</router-link>
           </li>
         </ul>
       </tab>
