@@ -26,11 +26,11 @@ module.exports = (options, ctx) => {
     result.push(prepareIndexPage());
 
     container.getDateList().forEach((date) => {
-      result.push(prepareDatePage(container, date));
+      result.push(prepareDatePage(date));
     });
 
     container.getNameList().forEach((name) => {
-      result.push(prepareNamePage(container, name));
+      result.push(prepareNamePage(name));
     })
 
     return result;
@@ -77,11 +77,10 @@ module.exports = (options, ctx) => {
   };
 
   /**
-   * @param {PackageContainer} container
    * @param {string} date
    * @return {Partial<PageOptions>}
    */
-  const prepareDatePage = (container, date) => {
+  const prepareDatePage = (date) => {
     return {
       path: sprintf('/%s/%s/', pathPrefix, dateForPagePath(date)),
       content: sprintf('<PlaygroundReleaseDiaryDateIndex date="%s"/>', escapeHtml(date)),
@@ -89,11 +88,10 @@ module.exports = (options, ctx) => {
   };
 
   /**
-   * @param {PackageContainer} container
    * @param {string} name
    * @return {Partial<PageOptions>}
    */
-  const prepareNamePage = (container, name) => {
+  const prepareNamePage = (name) => {
     return {
       path: sprintf('/%s/%s/', pathPrefix, name),
       content: sprintf('<PlaygroundReleaseDiaryNameIndex name="%s"/>', escapeHtml(name)),
