@@ -73,6 +73,9 @@ module.exports = (options, ctx) => {
     return {
       path: sprintf('/%s/', pathPrefix),
       content: '<PlaygroundReleaseDiaryIndex/>',
+      frontmatter: {
+        title: 'Release list',
+      },
     };
   };
 
