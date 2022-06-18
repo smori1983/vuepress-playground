@@ -21,7 +21,7 @@ module.exports = (options, ctx) => {
   const prepareDiaryPages = async () => {
     const result = [];
 
-    const container = prepareContainer(ctx);
+    const container = new PackageContainer(ctx.pages);
 
     result.push(prepareIndexPage());
 
@@ -35,36 +35,6 @@ module.exports = (options, ctx) => {
 
     return result;
   };
-
-  /**
-   * @param {Context} ctx
-   * @return {PackageContainer}
-   */
-  const prepareContainer = (ctx) => {
-    const container = new PackageContainer();
-
-    ctx.pages.filter(isTargetPage).forEach((page) => {
-      const {date, name, version} = page.frontmatter.package_release;
-      const path = page.regularPath;
-      container.add(date, name, version, path);
-    });
-
-    return container;
-  };
-
-  /**
-   * @param {Page} page
-   * @return {boolean}
-   */
-  const isTargetPage = (page) => {
-    return (
-      page.frontmatter.package_release &&
-      page.frontmatter.package_release.date &&
-      /^\d{4}\/\d{2}\/\d{2}$/.test(page.frontmatter.package_release.date) &&
-      page.frontmatter.package_release.name &&
-      page.frontmatter.package_release.version
-    );
-  }
 
   /**
    * @return {Partial<PageOptions>}

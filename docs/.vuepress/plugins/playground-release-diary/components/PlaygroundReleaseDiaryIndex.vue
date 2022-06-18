@@ -50,43 +50,13 @@ export default {
   },
 
   mounted() {
-    const container = this.prepareContainer(this.$site.pages);
+    const container = new PackageContainer(this.$site.pages);
 
     this.dateList = container.getDateList();
     this.nameList = container.getNameList();
   },
 
   methods: {
-    /**
-     * @param {Page[]} pages
-     * @return {PackageContainer}
-     */
-    prepareContainer(pages) {
-      const container = new PackageContainer();
-
-      pages.filter(this.isTargetPage).forEach((page) => {
-        const {date, name, version} = page.frontmatter.package_release;
-        const path = page.regularPath;
-        container.add(date, name, version, path);
-      });
-
-      return container;
-    },
-
-    /**
-     * @param {Page} page
-     * @return {bool}
-     */
-    isTargetPage(page) {
-      return (
-        page.frontmatter.package_release &&
-        page.frontmatter.package_release.date &&
-        /^\d{4}\/\d{2}\/\d{2}$/.test(page.frontmatter.package_release.date) &&
-        page.frontmatter.package_release.name &&
-        page.frontmatter.package_release.version
-      );
-    },
-
     /**
      * @param {string} date
      * @return {string}
