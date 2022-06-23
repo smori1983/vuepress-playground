@@ -1,13 +1,14 @@
 <template>
   <div>
     <h1>Release list ({{ date }})</h1>
-    <div>
-      <p>Back to <router-link :to="linkToIndex">Release list</router-link></p>
-    </div>
     <ul>
       <li v-for="item in itemList">
         <router-link :to="item.path">{{ item.name }} ({{ item.version }})</router-link>
       </li>
+    </ul>
+    <hr>
+    <ul>
+      <li>Back to <router-link :to="linkToIndex">Release list</router-link></li>
     </ul>
   </div>
 </template>
