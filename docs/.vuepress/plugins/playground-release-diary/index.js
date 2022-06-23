@@ -6,6 +6,7 @@
  */
 
 const path = require('path');
+const escapeHtml = require('escape-html');
 const sprintf = require('sprintf-js').sprintf;
 const PackageContainer = require('./package-container');
 
@@ -20,109 +21,53 @@ module.exports = (options, ctx) => {
   const prepareDiaryPages = async () => {
     const result = [];
 
-    const container = prepareContainer(ctx);
+    const container = new PackageContainer(ctx.pages);
 
-    result.push(prepareIndexPage(container));
+    result.push(prepareIndexPage());
 
     container.getDateList().forEach((date) => {
-      result.push(prepareDatePage(container, date));
+      result.push(prepareDatePage(date));
     });
 
     container.getNameList().forEach((name) => {
-      result.push(prepareNamePage(container, name));
+      result.push(prepareNamePage(name));
     })
 
     return result;
   };
 
   /**
-   * @param {Context} ctx
-   * @return {PackageContainer}
-   */
-  const prepareContainer = (ctx) => {
-    const container = new PackageContainer();
-
-    ctx.pages.filter(isTargetPage).forEach((page) => {
-      const {date, name, version} = page.frontmatter.package_release;
-      const path = page.regularPath;
-      container.add(date, name, version, path);
-    });
-
-    return container;
-  };
-
-  /**
-   * @param {Page} page
-   * @return {boolean}
-   */
-  const isTargetPage = (page) => {
-    return (
-      page.frontmatter.package_release &&
-      page.frontmatter.package_release.date &&
-      /^\d{4}\/\d{2}\/\d{2}$/.test(page.frontmatter.package_release.date) &&
-      page.frontmatter.package_release.name &&
-      page.frontmatter.package_release.version
-    );
-  }
-
-  /**
-   * @param {PackageContainer} container
    * @return {Partial<PageOptions>}
    */
-  const prepareIndexPage = (container) => {
-    const fileLines = [];
-
-    fileLines.push('# Release list');
-    fileLines.push('');
-    fileLines.push('<PlaygroundReleaseDiaryIndex/>');
-
+  const prepareIndexPage = () => {
     return {
       path: sprintf('/%s/', pathPrefix),
-      content: fileLines.join('\n'),
+      content: '<PlaygroundReleaseDiaryIndex/>',
+      frontmatter: {
+        title: 'Release list',
+      },
     };
   };
 
   /**
-   * @param {PackageContainer} container
    * @param {string} date
    * @return {Partial<PageOptions>}
    */
-  const prepareDatePage = (container, date) => {
-    const fileLines = [];
-
-    fileLines.push(sprintf('# Release list (%s)', date));
-    fileLines.push('');
-    fileLines.push(sprintf('Back to [Release list](/%s/)', pathPrefix));
-
-    container.getByDate(date).forEach((pkg) => {
-      fileLines.push(sprintf('- [%s (%s)](%s)', pkg.name, pkg.version, pkg.path));
-    });
-
+  const prepareDatePage = (date) => {
     return {
       path: sprintf('/%s/%s/', pathPrefix, dateForPagePath(date)),
-      content: fileLines.join('\n'),
+      content: sprintf('<PlaygroundReleaseDiaryDateIndex date="%s"/>', escapeHtml(date)),
     };
   };
 
   /**
-   * @param {PackageContainer} container
    * @param {string} name
    * @return {Partial<PageOptions>}
    */
-  const prepareNamePage = (container, name) => {
-    const fileLines = [];
-
-    fileLines.push(sprintf('# Release list (%s)', name));
-    fileLines.push('');
-    fileLines.push(sprintf('Back to [Release list](/%s/)', pathPrefix));
-
-    container.getByName(name).forEach((pkg) => {
-      fileLines.push(sprintf('- [%s (%s)](%s)', pkg.version, pkg.date, pkg.path));
-    });
-
+  const prepareNamePage = (name) => {
     return {
       path: sprintf('/%s/%s/', pathPrefix, name),
-      content: fileLines.join('\n'),
+      content: sprintf('<PlaygroundReleaseDiaryNameIndex name="%s"/>', escapeHtml(name)),
     };
   };
 
