@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Release list ({{ date }})</h1>
+    <h1>{{ title(date) }}</h1>
     <ul>
       <li v-for="item in itemList">
         <router-link :to="item.path">{{ item.name }} ({{ item.version }})</router-link>
@@ -8,13 +8,15 @@
     </ul>
     <hr>
     <ul>
-      <li>Back to <router-link :to="linkToDateIndex">Release list (By date)</router-link></li>
+      <li>Back to <router-link :to="config.dateIndex.path">{{ config.dateIndex.title }}</router-link></li>
     </ul>
   </div>
 </template>
 
 <script>
 import PackageContainer from '../package-container';
+
+import pluginConfig from '@dynamic/playground-release-diary/config';
 
 export default {
   props: {
@@ -26,7 +28,7 @@ export default {
 
   data() {
     return {
-      linkToDateIndex: '/release/date/',
+      config: pluginConfig,
       itemList: [],
     };
   },
@@ -36,6 +38,16 @@ export default {
 
     this.itemList = container.getByDate(this.date);
   },
+
+  methods: {
+    /**
+     * @param {string} date
+     * @return {string}
+     */
+    title(date) {
+      return this.config.datePage.title.replace(':date', date);
+    }
+  }
 };
 </script>
 

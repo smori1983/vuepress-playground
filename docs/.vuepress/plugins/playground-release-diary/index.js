@@ -16,7 +16,35 @@ const PackageContainer = require('./package-container');
  * @return {PluginOptionAPI}
  */
 module.exports = (options, ctx) => {
-  const pathPrefix = 'release';
+  const config = {
+    index: {
+      path: '/release/',
+      title: 'Release list',
+    },
+    dateIndex: {
+      path: '/release/date/',
+      title: 'Release list (by date)',
+    },
+    datePage: {
+      path: '/release/date/:date/',
+      title: 'Release list (:date)',
+    },
+    nameIndex: {
+      path: '/release/name/',
+      title: 'Release list (by name)',
+    },
+    namePage: {
+      path: '/release/name/:name/',
+      title: 'Release list (:name)',
+    }
+  };
+
+  const prepareClientDynamicModules = () => {
+    return {
+      name: 'playground-release-diary/config.js',
+      content: `export default ${JSON.stringify(config, null, 2)}`,
+    };
+  };
 
   const prepareDiaryPages = async () => {
     const result = [];
@@ -43,10 +71,10 @@ module.exports = (options, ctx) => {
    */
   const prepareIndex = () => {
     return {
-      path: sprintf('/%s/', pathPrefix),
+      path: config.index.path,
       content: '<PlaygroundReleaseDiaryIndex/>',
       frontmatter: {
-        title: 'Release list',
+        title: config.index.title,
       },
     };
   };
@@ -56,7 +84,7 @@ module.exports = (options, ctx) => {
    */
   const prepareDateIndex = () => {
     return {
-      path: sprintf('/%s/date/', pathPrefix, ),
+      path: config.dateIndex.path,
       content: '<PlaygroundReleaseDiaryDateIndex/>',
     };
   };
@@ -67,7 +95,7 @@ module.exports = (options, ctx) => {
    */
   const prepareDatePage = (date) => {
     return {
-      path: sprintf('/%s/date/%s/', pathPrefix, dateForPagePath(date)),
+      path: config.datePage.path.replace(':date', date),
       content: sprintf('<PlaygroundReleaseDiaryDatePage date="%s"/>', escapeHtml(date)),
     };
   };
@@ -77,7 +105,7 @@ module.exports = (options, ctx) => {
    */
   const prepareNameIndex = () => {
     return {
-      path: sprintf('/%s/name/', pathPrefix, ),
+      path: config.nameIndex.path,
       content: '<PlaygroundReleaseDiaryNameIndex/>',
     };
   };
@@ -88,19 +116,9 @@ module.exports = (options, ctx) => {
    */
   const prepareNamePage = (name) => {
     return {
-      path: sprintf('/%s/name/%s/', pathPrefix, name),
+      path: config.namePage.path.replace(':name', name),
       content: sprintf('<PlaygroundReleaseDiaryNamePage name="%s"/>', escapeHtml(name)),
     };
-  };
-
-  /**
-   * Convert 'YYYY/MM/DD' to 'YYYYMMDD'.
-   *
-   * @param {string} date
-   * @return {string}
-   */
-  const dateForPagePath = (date) => {
-    return date.replace(/\//g, '');
   };
 
   return {
@@ -114,6 +132,10 @@ module.exports = (options, ctx) => {
       config
         .plugin('vuepress-plugin-playground-release-diary')
         .use(require('./markdown-it-plugin'));
+    },
+
+    clientDynamicModules() {
+      return prepareClientDynamicModules();
     },
 
     async additionalPages() {
