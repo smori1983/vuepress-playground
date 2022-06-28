@@ -23,12 +23,14 @@ module.exports = (options, ctx) => {
 
     const container = new PackageContainer(ctx.pages);
 
-    result.push(prepareIndexPage());
+    result.push(prepareIndex());
 
+    result.push(prepareDateIndex());
     container.getDateList().forEach((date) => {
       result.push(prepareDatePage(date));
     });
 
+    result.push(prepareNameIndex());
     container.getNameList().forEach((name) => {
       result.push(prepareNamePage(name));
     })
@@ -39,7 +41,7 @@ module.exports = (options, ctx) => {
   /**
    * @return {Partial<PageOptions>}
    */
-  const prepareIndexPage = () => {
+  const prepareIndex = () => {
     return {
       path: sprintf('/%s/', pathPrefix),
       content: '<PlaygroundReleaseDiaryIndex/>',
@@ -50,13 +52,33 @@ module.exports = (options, ctx) => {
   };
 
   /**
+   * @return {Partial<PageOptions>}
+   */
+  const prepareDateIndex = () => {
+    return {
+      path: sprintf('/%s/date/', pathPrefix, ),
+      content: '<PlaygroundReleaseDiaryDateIndex/>',
+    };
+  };
+
+  /**
    * @param {string} date
    * @return {Partial<PageOptions>}
    */
   const prepareDatePage = (date) => {
     return {
-      path: sprintf('/%s/%s/', pathPrefix, dateForPagePath(date)),
-      content: sprintf('<PlaygroundReleaseDiaryDateIndex date="%s"/>', escapeHtml(date)),
+      path: sprintf('/%s/date/%s/', pathPrefix, dateForPagePath(date)),
+      content: sprintf('<PlaygroundReleaseDiaryDatePage date="%s"/>', escapeHtml(date)),
+    };
+  };
+
+  /**
+   * @return {Partial<PageOptions>}
+   */
+  const prepareNameIndex = () => {
+    return {
+      path: sprintf('/%s/name/', pathPrefix, ),
+      content: '<PlaygroundReleaseDiaryNameIndex/>',
     };
   };
 
@@ -66,8 +88,8 @@ module.exports = (options, ctx) => {
    */
   const prepareNamePage = (name) => {
     return {
-      path: sprintf('/%s/%s/', pathPrefix, name),
-      content: sprintf('<PlaygroundReleaseDiaryNameIndex name="%s"/>', escapeHtml(name)),
+      path: sprintf('/%s/name/%s/', pathPrefix, name),
+      content: sprintf('<PlaygroundReleaseDiaryNamePage name="%s"/>', escapeHtml(name)),
     };
   };
 

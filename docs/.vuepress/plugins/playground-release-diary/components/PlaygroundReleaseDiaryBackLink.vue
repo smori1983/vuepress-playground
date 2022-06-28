@@ -56,11 +56,11 @@ export default {
      * @return {string}
      */
     linkForDate(date) {
-      return sprintf('/%s/%s/', 'release', this.dateForPath(date));
+      return sprintf('/%s/date/%s/', 'release', this.dateForPath(date));
     },
 
     linkForName(name) {
-      return sprintf('/%s/%s/', 'release', name);
+      return sprintf('/%s/name/%s/', 'release', name);
     },
 
     /**

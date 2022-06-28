@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>Release list ({{ date }})</h1>
+    <h1>Release list (By date)</h1>
     <ul>
-      <li v-for="item in itemList">
-        <router-link :to="item.path">{{ item.name }} ({{ item.version }})</router-link>
+      <li v-for="date in dateList">
+        <router-link :to="linkForDate(date)">{{ date }}</router-link>
       </li>
     </ul>
     <hr>
@@ -15,26 +15,38 @@
 
 <script>
 import PackageContainer from '../package-container';
+import { sprintf } from 'sprintf-js';
 
 export default {
-  props: {
-    date: {
-      type: String,
-      required: true,
-    },
-  },
-
   data() {
     return {
+      dateList: [],
       linkToIndex: '/release/',
-      itemList: [],
     };
   },
 
   mounted() {
     const container = new PackageContainer(this.$site.pages);
 
-    this.itemList = container.getByDate(this.date);
+    this.dateList = container.getDateList();
+  },
+
+  methods: {
+    /**
+     * @param {string} date
+     * @return {string}
+     */
+    linkForDate(date) {
+      return sprintf('/%s/date/%s/', 'release', this.dateForPath(date));
+    },
+
+    /**
+     * @param {string} date
+     * @return {string}
+     */
+    dateForPath(date) {
+      return date.replace(/\//g, '');
+    }
   },
 };
 </script>

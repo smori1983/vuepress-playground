@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>Release list ({{ name }})</h1>
+    <h1>Release list (By name)</h1>
     <ul>
-      <li v-for="item in itemList">
-        <router-link :to="item.path">{{ item.version }} ({{ item.date }})</router-link>
+      <li v-for="name in nameList">
+        <router-link :to="linkForName(name)">{{ name }}</router-link>
       </li>
     </ul>
     <hr>
@@ -15,26 +15,26 @@
 
 <script>
 import PackageContainer from '../package-container';
+import { sprintf } from "sprintf-js";
 
 export default {
-  props: {
-    name: {
-      type: String,
-      required: true,
-    },
-  },
-
   data() {
     return {
       linkToIndex: '/release/',
-      itemList: [],
+      nameList: [],
     };
   },
 
   mounted() {
     const container = new PackageContainer(this.$site.pages);
 
-    this.itemList = container.getByName(this.name);
+    this.nameList = container.getNameList();
+  },
+
+  methods: {
+    linkForName(name) {
+      return sprintf('/%s/name/%s/', 'release', name);
+    },
   },
 };
 </script>
