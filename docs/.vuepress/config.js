@@ -18,6 +18,7 @@ module.exports = {
         title: 'Demo',
         collapsable: false,
         children: [
+          '/demo/data_binding.md',
           '/demo/keyboard_event.md',
           '/demo/auto_link_label.md',
           '/demo/gitgraph_editor.md',
@@ -65,6 +66,8 @@ module.exports = {
     //  hostname: 'https://vuepress-playground.example.com',
     //  exclude: ['/404.html'],
     //}],
+
+    [require('./plugins/playground-data-binding')],
 
     [require('./plugins/playground-table-search')],
 
