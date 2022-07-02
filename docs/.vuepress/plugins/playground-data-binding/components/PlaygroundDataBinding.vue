@@ -11,15 +11,13 @@
         <td>
           <input
             type="text"
-            v-bind:value="input1"
-            v-on:input="input1 = $event.target.value"
+            v-model="input1"
           />
         </td>
         <td>
           <input
             type="text"
-            v-bind:value="input1"
-            v-on:input="input1 = $event.target.value"
+            v-model="input1"
           />
         </td>
       </tr>
