@@ -79,6 +79,10 @@ class PackageContainer {
     })
 
     result.sort((a, b) => {
+      if (a.name === b.name) {
+        return a.version <= b.version ? 1 : -1;
+      }
+
       return a.name <= b.name ? -1 : 1;
     })
 
