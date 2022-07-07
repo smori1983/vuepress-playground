@@ -58,6 +58,17 @@ module.exports = (options, ctx) => {
 
   /**
    * @param {Page} page
+   */
+  const preparePageData = (page) => {
+    if (isTargetPage(page)) {
+      page.plugin_playground_release_diary = {
+        target: true,
+      };
+    }
+  };
+
+  /**
+   * @param {Page} page
    * @return {boolean}
    * @private
    */
@@ -161,6 +172,10 @@ module.exports = (options, ctx) => {
 
     clientDynamicModules() {
       return prepareClientDynamicModules();
+    },
+
+    extendPageData($page) {
+      preparePageData($page);
     },
 
     async additionalPages() {
