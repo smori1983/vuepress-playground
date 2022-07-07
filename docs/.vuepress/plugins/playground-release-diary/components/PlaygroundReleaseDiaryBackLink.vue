@@ -26,12 +26,10 @@ export default {
   },
 
   mounted() {
-    if (this.$page.plugin_playground_release_diary) {
-      if (this.$page.plugin_playground_release_diary.target) {
-        this.shouldShow = true;
-        this.date = this.$page.frontmatter.package_release.date;
-        this.name = this.$page.frontmatter.package_release.name;
-      }
+    if (this.$page.plugin_playground_release_diary_target) {
+      this.shouldShow = true;
+      this.date = this.$page.frontmatter.package_release.date;
+      this.name = this.$page.frontmatter.package_release.name;
     }
   },
 

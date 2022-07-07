@@ -61,9 +61,7 @@ module.exports = (options, ctx) => {
    */
   const preparePageData = (page) => {
     if (isTargetPage(page)) {
-      page.plugin_playground_release_diary = {
-        target: true,
-      };
+      page.plugin_playground_release_diary_target = true;
     }
   };
 

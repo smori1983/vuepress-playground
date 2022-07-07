@@ -15,23 +15,13 @@ class PackageContainer {
      */
     this._packages = [];
 
-    pages.filter(this._isTargetPage).forEach((page) => {
-      const {date, name, version} = page.frontmatter.package_release;
-      const path = page.regularPath;
-      this.add(date, name, version, path);
+    pages.forEach((page) => {
+      if (page.plugin_playground_release_diary_target) {
+        const {date, name, version} = page.frontmatter.package_release;
+        const path = page.regularPath;
+        this.add(date, name, version, path);
+      }
     });
-  }
-
-  /**
-   * @param {Page} page
-   * @return {boolean}
-   * @private
-   */
-  _isTargetPage(page) {
-    return (
-      page.plugin_playground_release_diary &&
-      page.plugin_playground_release_diary.target
-    );
   }
 
   /**
