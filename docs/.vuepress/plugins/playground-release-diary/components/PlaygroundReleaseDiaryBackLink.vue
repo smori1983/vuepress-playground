@@ -26,28 +26,16 @@ export default {
   },
 
   mounted() {
-    if (this.isTargetPage(this.$page)) {
-      this.shouldShow = true;
-      this.date = this.$page.frontmatter.package_release.date;
-      this.name = this.$page.frontmatter.package_release.name;
+    if (this.$page.plugin_playground_release_diary) {
+      if (this.$page.plugin_playground_release_diary.target) {
+        this.shouldShow = true;
+        this.date = this.$page.frontmatter.package_release.date;
+        this.name = this.$page.frontmatter.package_release.name;
+      }
     }
   },
 
   methods: {
-    /**
-     * @param {Page} page
-     * @return {bool}
-     */
-    isTargetPage(page) {
-      return (
-        page.frontmatter.package_release &&
-        page.frontmatter.package_release.date &&
-        /^\d{4}\/\d{2}\/\d{2}$/.test(page.frontmatter.package_release.date) &&
-        page.frontmatter.package_release.name &&
-        page.frontmatter.package_release.version
-      );
-    },
-
     /**
      * @param {string} date
      * @return {string}
