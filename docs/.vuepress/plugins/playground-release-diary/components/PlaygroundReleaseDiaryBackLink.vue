@@ -26,7 +26,7 @@ export default {
   },
 
   mounted() {
-    if (this.isTargetPage(this.$page)) {
+    if (this.$page.plugin_playground_release_diary_target) {
       this.shouldShow = true;
       this.date = this.$page.frontmatter.package_release.date;
       this.name = this.$page.frontmatter.package_release.name;
@@ -34,20 +34,6 @@ export default {
   },
 
   methods: {
-    /**
-     * @param {Page} page
-     * @return {bool}
-     */
-    isTargetPage(page) {
-      return (
-        page.frontmatter.package_release &&
-        page.frontmatter.package_release.date &&
-        /^\d{4}\/\d{2}\/\d{2}$/.test(page.frontmatter.package_release.date) &&
-        page.frontmatter.package_release.name &&
-        page.frontmatter.package_release.version
-      );
-    },
-
     /**
      * @param {string} date
      * @return {string}

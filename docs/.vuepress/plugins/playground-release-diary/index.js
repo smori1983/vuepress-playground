@@ -40,11 +40,37 @@ module.exports = (options, ctx) => {
   };
 
   const prepareClientDynamicModules = () => {
-    return {
-      name: 'playground-release-diary/config.js',
-      content: `export default ${JSON.stringify(config, null, 2)}`,
-    };
+    return [
+      {
+        name: 'playground-release-diary/config.js',
+        content: `export default ${JSON.stringify(config, null, 2)}`,
+      },
+    ];
   };
+
+  /**
+   * @param {Page} page
+   */
+  const preparePageData = (page) => {
+    if (isTargetPage(page)) {
+      page.plugin_playground_release_diary_target = true;
+    }
+  };
+
+  /**
+   * @param {Page} page
+   * @return {boolean}
+   * @private
+   */
+  const isTargetPage = (page) => {
+    return (
+      page.frontmatter.package_release &&
+      page.frontmatter.package_release.date &&
+      /^\d{4}\/\d{2}\/\d{2}$/.test(page.frontmatter.package_release.date) &&
+      page.frontmatter.package_release.name &&
+      page.frontmatter.package_release.version
+    );
+  }
 
   const prepareDiaryPages = async () => {
     const result = [];
@@ -136,6 +162,10 @@ module.exports = (options, ctx) => {
 
     clientDynamicModules() {
       return prepareClientDynamicModules();
+    },
+
+    extendPageData($page) {
+      preparePageData($page);
     },
 
     async additionalPages() {
