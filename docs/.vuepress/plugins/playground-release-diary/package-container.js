@@ -18,20 +18,9 @@ class PackageContainer {
     pages.forEach((page) => {
       if (page.plugin_playground_release_diary_target) {
         const {date, name, version} = page.frontmatter.package_release;
-        const path = page.regularPath;
-        this.add(date, name, version, path);
+        this._packages.push(new PackageInfo(date, name, version, page.regularPath));
       }
     });
-  }
-
-  /**
-   * @param {string} date
-   * @param {string} name
-   * @param {string} version
-   * @param {string} path
-   */
-  add(date, name, version, path) {
-    this._packages.push(new PackageInfo(date, name, version, path));
   }
 
   /**
