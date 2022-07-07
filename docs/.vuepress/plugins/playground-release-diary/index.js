@@ -40,18 +40,10 @@ module.exports = (options, ctx) => {
   };
 
   const prepareClientDynamicModules = () => {
-    const targets = {
-      keys: ctx.pages.filter(isTargetPage).map((page) => page.key),
-    };
-
     return [
       {
         name: 'playground-release-diary/config.js',
         content: `export default ${JSON.stringify(config, null, 2)}`,
-      },
-      {
-        name: 'playground-release-diary/targets.js',
-        content: `export default ${JSON.stringify(targets, null, 2)}`,
       },
     ];
   };
