@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ title(name) }}</h1>
+    <h1>{{ title }}</h1>
     <ul>
       <li v-for="item in itemList">
         <router-link :to="item.path">{{ item.version }} ({{ item.date }})</router-link>
@@ -29,6 +29,7 @@ export default {
   data() {
     return {
       config: pluginConfig,
+      title: '',
       itemList: [],
     };
   },
@@ -36,18 +37,9 @@ export default {
   mounted() {
     const container = new PackageContainer(this.$site.pages);
 
+    this.title = this.config.namePage.title.replace(':name', this.name);
     this.itemList = container.getByName(this.name);
   },
-
-  methods: {
-    /**
-     * @param {string} name
-     * @return {string}
-     */
-    title(name) {
-      return this.config.namePage.title.replace(':name', name);
-    },
-  }
 };
 </script>
 
