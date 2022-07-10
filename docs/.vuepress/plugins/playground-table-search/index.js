@@ -1,6 +1,13 @@
+/**
+ * @typedef {import('vuepress-types').PluginOptionAPI} PluginOptionAPI
+ */
+
 const path = require('path');
 
-module.exports = (options, ctx) => ({
+/**
+ * @return {PluginOptionAPI}
+ */
+module.exports = () => ({
   name: 'playground-table-search',
   enhanceAppFiles: [
     path.resolve(__dirname, 'enhanceAppFile.js'),
