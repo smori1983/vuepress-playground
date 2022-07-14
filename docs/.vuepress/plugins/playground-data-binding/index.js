@@ -9,6 +9,8 @@ const path = require('path');
  */
 module.exports = () => {
   return {
+    name: 'playground-data-binding',
+
     enhanceAppFiles: [
       path.resolve(__dirname, 'enhanceAppFile.js'),
     ],
