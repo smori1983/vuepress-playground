@@ -69,11 +69,11 @@ module.exports = {
 
     [require('./plugins/playground-data-binding')],
 
+    [require('./plugins/playground-release-diary')],
+
     [require('./plugins/playground-site-pages')],
 
     [require('./plugins/playground-table-search')],
-
-    [require('./plugins/playground-release-diary')],
   ],
 
   markdown: {
