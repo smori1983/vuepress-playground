@@ -26,6 +26,13 @@ module.exports = {
         ],
       },
       {
+        title: 'Plugin',
+        collapsable: false,
+        children: [
+          '/plugin/tags.md',
+        ],
+      },
+      {
         title: 'Misc',
         collapsable: false,
         path: '/misc/',
@@ -66,6 +73,8 @@ module.exports = {
     //  hostname: 'https://vuepress-playground.example.com',
     //  exclude: ['/404.html'],
     //}],
+
+    ['tags'],
 
     [require('./plugins/playground-data-binding')],
 
