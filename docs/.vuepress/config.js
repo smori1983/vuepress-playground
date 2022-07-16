@@ -67,6 +67,8 @@ module.exports = {
     //  exclude: ['/404.html'],
     //}],
 
+    [require('./plugins/home')],
+
     [require('./plugins/playground-data-binding')],
 
     [require('./plugins/playground-release-diary')],
