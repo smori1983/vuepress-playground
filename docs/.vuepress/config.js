@@ -21,6 +21,7 @@ module.exports = {
           '/demo/data_binding.md',
           '/demo/keyboard_event.md',
           '/demo/auto_link_label.md',
+          '/demo/update_info.md',
           '/demo/gitgraph_editor.md',
           '/demo/gitgraph_demo.md',
         ],
