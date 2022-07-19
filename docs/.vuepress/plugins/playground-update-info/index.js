@@ -4,6 +4,7 @@
  * @typedef {import('vuepress-types').PluginOptionAPI} PluginOptionAPI
  */
 
+const path = require('path');
 const Conf = require('conf');
 
 /**
@@ -12,13 +13,32 @@ const Conf = require('conf');
  * @return {PluginOptionAPI}
  */
 module.exports = (options, ctx) => {
+  let updates = [];
+
   return {
+    name: 'playground-update-info',
+
+    enhanceAppFiles: [
+      path.resolve(__dirname, 'enhanceAppFile.js'),
+    ],
+
+    async ready() {
+      updates = collectUpdateInfo(ctx.pages);
+    },
+
+    clientDynamicModules() {
+      return [
+        {
+          name: 'playground-update-info/data.js',
+          content: `export default ${JSON.stringify(updates, null, 2)}`,
+        },
+      ];
+    },
+
     async generated() {
       const conf = new Conf({
         projectName: 'vuepress-playground-plugin-playground-update-info-389a0acd21',
       });
-
-      const updates = collectUpdateInfo(ctx.pages);
 
       if (conf.has('age0')) {
         conf.set('age1', conf.get('age0'));
