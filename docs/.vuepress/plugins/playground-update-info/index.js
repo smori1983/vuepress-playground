@@ -58,23 +58,24 @@ const collectUpdateInfo = (pages) => {
   const result = [];
 
   pages.forEach((page) => {
-    if (!page.frontmatter.update_info) {
+    if (!Array.isArray(page.frontmatter.update_info)) {
       return;
     }
 
-    if (!hasValidDate(page.frontmatter.update_info)) {
-      return;
-    }
-
-    const date = page.frontmatter.update_info.date;
-    const description = prepareDescription(page.frontmatter.update_info);
-
-    result.push({
-      path: page.path,
-      title: page.title,
-      date: date,
-      description: description,
+    const infoList = page.frontmatter.update_info.filter(hasValidDate).map((info) => {
+      return {
+        date: info.date,
+        description: prepareDescription(info),
+      };
     });
+
+    if (infoList.length > 0) {
+      result.push({
+        path: page.path,
+        title: page.title,
+        info: infoList,
+      });
+    }
   });
 
   return result;

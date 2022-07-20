@@ -1,17 +1,16 @@
 <template>
   <div>
-    <ul>
-      <li v-for="item in updates">
-        <div>
-          ({{ item.date }}) <router-link :to="item.path">{{ item.title }}</router-link>
-        </div>
-        <ul v-if="item.description.length > 0">
-          <li v-for="line in item.description">
-            {{ line }}
-          </li>
-        </ul>
-      </li>
-    </ul>
+    <div v-for="page in updates">
+      <router-link :to="page.path">{{ page.title }}</router-link>
+      <ul>
+        <li v-for="info in page.info">
+          <span>{{ info.date }}</span>
+          <ul v-if="info.description.length > 0">
+            <li v-for="line in info.description">{{ line }}</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
