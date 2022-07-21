@@ -12,6 +12,7 @@ module.exports = {
         collapsable: false,
         children: [
           '/debug/site_pages.md',
+          '/debug/update_info.md',
         ],
       },
       {
