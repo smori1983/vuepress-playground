@@ -30,11 +30,11 @@ module.exports = {
         title: 'Update info pages',
         collapsable: false,
         children: [
-          '/misc/page01.md',
-          '/misc/page02.md',
-          '/misc/page03.md',
-          '/misc/page04.md',
-          '/misc/page05.md',
+          '/update_info/page01.md',
+          '/update_info/page02.md',
+          '/update_info/page03.md',
+          '/update_info/page04.md',
+          '/update_info/page05.md',
         ],
       },
       {
