@@ -20,8 +20,22 @@ import data from '@dynamic/playground-update-info/data';
 export default {
   data() {
     return {
-      updates: data,
+      updates: [],
     };
+  },
+
+  mounted() {
+    const sorting = data.slice();
+
+    sorting.sort((a, b) => {
+      if (a.latestDate === b.latestDate) {
+        return a.title > b.title ? 1 : -1;
+      }
+
+      return a.latestDate > b.latestDate ? -1 : 1;
+    });
+
+    this.updates = sorting;
   },
 };
 </script>
