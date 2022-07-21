@@ -62,17 +62,29 @@ const collectUpdateInfo = (pages) => {
       return;
     }
 
-    const infoList = page.frontmatter.update_info.filter(hasValidDate).map((info) => {
-      return {
+    const infoList = [];
+    let latestDate = null;
+
+    page.frontmatter.update_info.filter(hasValidDate).forEach((info) => {
+      infoList.push({
         date: info.date,
         description: prepareDescription(info),
-      };
+      });
+
+      if (latestDate === null) {
+        latestDate = info.date;
+      }
+
+      if (latestDate < info.date) {
+        latestDate = info.date;
+      }
     });
 
     if (infoList.length > 0) {
       result.push({
         path: page.path,
         title: page.title,
+        latestDate: latestDate,
         info: infoList,
       });
     }
