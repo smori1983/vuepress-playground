@@ -4,10 +4,10 @@ update_info:
     description:
     - Update text for 2022/07/01.
     - Update text for 2022/07/01.
-  - date: 2022/07/02
+  - date: 2022/07/11
     description:
-    - Update text for 2022/07/02.
-    - Update text for 2022/07/02.
+    - Update text for 2022/07/11.
+    - Update text for 2022/07/11.
 ---
 # Page 01
 
