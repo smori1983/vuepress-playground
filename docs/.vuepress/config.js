@@ -27,6 +27,17 @@ module.exports = {
         ],
       },
       {
+        title: 'Update info pages',
+        collapsable: false,
+        children: [
+          '/misc/page01.md',
+          '/misc/page02.md',
+          '/misc/page03.md',
+          '/misc/page04.md',
+          '/misc/page05.md',
+        ],
+      },
+      {
         title: 'Misc',
         collapsable: false,
         path: '/misc/',
