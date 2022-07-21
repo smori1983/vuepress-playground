@@ -82,28 +82,28 @@ const collectUpdateInfo = (pages) => {
 };
 
 /**
- * @param {Object} updateInfo
+ * @param {Object} info
  * @return {boolean}
  */
-const hasValidDate = (updateInfo) => {
-  if (typeof updateInfo.date !== 'string') {
+const hasValidDate = (info) => {
+  if (typeof info.date !== 'string') {
     return false;
   }
 
-  return /^\d{4}\/\d{2}\/\d{2}$/.test(updateInfo.date);
+  return /^\d{4}\/\d{2}\/\d{2}$/.test(info.date);
 };
 
 /**
- * @param updateInfo
+ * @param {Object} info
  * @return {string[]}
  */
-const prepareDescription = (updateInfo) => {
-  if (!Array.isArray(updateInfo.description)) {
+const prepareDescription = (info) => {
+  if (!Array.isArray(info.description)) {
     return [];
   }
 
-  if (updateInfo.description.every((child) => typeof child === 'string')) {
-    return updateInfo.description;
+  if (info.description.every((child) => typeof child === 'string')) {
+    return info.description;
   }
 
   return [];
