@@ -57,6 +57,8 @@ module.exports = {
       marker: '!',
     }],
 
+    ['frontmatter-update-info'],
+
     //['git-info', {
     //  useGlobalUi: true,
     //}],
@@ -87,8 +89,6 @@ module.exports = {
     [require('./plugins/playground-site-pages')],
 
     [require('./plugins/playground-table-search')],
-
-    [require('./plugins/playground-update-info')],
   ],
 
   markdown: {

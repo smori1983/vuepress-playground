@@ -1,3 +1,3 @@
 # Update info (debug)
 
-<PlaygroundUpdateInfoDebug/>
+<PluginFrontmatterUpdateInfoDebug/>
