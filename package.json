@@ -10,9 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "vuepress build docs"
   },
-  "dependencies": {
-    "conf": "^10.1.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.9.7",
     "@vuepress/shared-utils": "^1.9.7",
