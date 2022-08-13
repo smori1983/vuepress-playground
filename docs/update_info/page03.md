@@ -1,6 +1,6 @@
 ---
 update_info:
-  - date: 2022/07/20
+  - date: 2022/08/11
     description:
     - Update text of Page 03.
     - Update text of Page 03.
@@ -17,7 +17,7 @@ update_info:
 ````
 ---
 update_info:
-  - date: 2022/07/20
+  - date: 2022/08/11
     description:
     - Update text of Page 03.
     - Update text of Page 03.
