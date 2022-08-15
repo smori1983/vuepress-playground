@@ -10,14 +10,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "vuepress build docs"
   },
-  "dependencies": {},
+  "dependencies": {
+    "escape-html": "^1.0.3",
+    "sprintf-js": "^1.1.2",
+    "vuejs-datepicker": "^1.6.2"
+  },
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.9.7",
     "@vuepress/shared-utils": "^1.9.7",
-    "escape-html": "^1.0.3",
     "http-server": "^14.1.1",
-    "sprintf-js": "^1.1.2",
-    "vuejs-datepicker": "^1.6.2",
     "vuepress": "^1.9.7",
     "vuepress-plugin-auto-link-label": "^1.0.1",
     "vuepress-plugin-frontmatter-update-info": "^1.0.0",
