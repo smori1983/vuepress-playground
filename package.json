@@ -17,7 +17,6 @@
     "escape-html": "^1.0.3",
     "http-server": "^14.1.1",
     "sprintf-js": "^1.1.2",
-    "vue-tabs-component": "^1.5.0",
     "vuejs-datepicker": "^1.6.2",
     "vuepress": "^1.9.7",
     "vuepress-plugin-auto-link-label": "^1.0.1",
