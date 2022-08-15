@@ -1,6 +1,6 @@
 ---
 update_info:
-  - date: 2022/08/11
+  - date: 2022/08/15
     description:
     - Update text of Page 03.
     - Update text of Page 03.
@@ -12,12 +12,12 @@ update_info:
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
 
 
+## Source
 
-::: details Source
-````
+```
 ---
 update_info:
-  - date: 2022/08/11
+  - date: 2022/08/15
     description:
     - Update text of Page 03.
     - Update text of Page 03.
@@ -27,5 +27,4 @@ update_info:
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
-````
-:::
+```

@@ -10,6 +10,7 @@ module.exports = {
       {
         title: 'Debug',
         collapsable: false,
+        sidebarDepth: 0,
         children: [
           '/debug/site_pages.md',
           '/debug/update_info.md',
@@ -18,6 +19,7 @@ module.exports = {
       {
         title: 'Demo',
         collapsable: false,
+        sidebarDepth: 0,
         children: [
           '/demo/data_binding.md',
           '/demo/keyboard_event.md',
@@ -30,18 +32,18 @@ module.exports = {
       {
         title: 'Update info pages',
         collapsable: false,
+        sidebarDepth: 0,
         children: [
           '/update_info/page01.md',
           '/update_info/page02.md',
           '/update_info/page03.md',
-          '/update_info/page04.md',
-          '/update_info/page05.md',
         ],
       },
       {
+        path: '/misc/',
         title: 'Misc',
         collapsable: false,
-        path: '/misc/',
+        sidebarDepth: 0,
         children: [
           '/misc/table_search.md',
           '/release/',

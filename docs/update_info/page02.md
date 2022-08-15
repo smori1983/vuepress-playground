@@ -9,9 +9,9 @@ update_info:
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
 
 
+## Source
 
-::: details Source
-````
+```
 ---
 update_info:
   - date: 2022/08/10
@@ -21,5 +21,4 @@ update_info:
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
 - Lorem ipsum dolor sit amet, consectetur adipiscing elit
-````
-:::
+```
