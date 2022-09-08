@@ -69,7 +69,9 @@ module.exports = {
       marker: '!',
     }],
 
-    ['frontmatter-update-info'],
+    ['frontmatter-update-info', {
+      pageEmbed: true,
+    }],
 
     //['git-info', {
     //  useGlobalUi: true,
