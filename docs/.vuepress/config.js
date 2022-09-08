@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/',
+  base: '/vuepress-playground/',
   title: 'Vuepress playground',
   description: '',
   head: [],
