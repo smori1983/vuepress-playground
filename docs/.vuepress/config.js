@@ -30,6 +30,15 @@ module.exports = {
         ],
       },
       {
+        title: 'View source',
+        collapsable: false,
+        sidebarDepth: 0,
+        children: [
+          '/view_source/page01.md',
+          '/view_source/page02.md',
+        ]
+      },
+      {
         title: 'Update info pages',
         collapsable: false,
         sidebarDepth: 0,
@@ -105,6 +114,8 @@ module.exports = {
     [require('./plugins/playground-site-pages')],
 
     [require('./plugins/playground-table-search')],
+
+    [require('./plugins/playground-view-source')],
   ],
 
   markdown: {
