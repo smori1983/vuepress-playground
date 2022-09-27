@@ -1,6 +1,14 @@
 <template>
   <div class="playground-view-source">
-    <pre class="source">{{ source }}</pre>
+    <template v-if="display === 'container'">
+      <details class="custom-block details">
+        <summary>Source</summary>
+        <pre class="source">{{ source }}</pre>
+      </details>
+    </template>
+    <template v-else>
+      <pre class="source">{{ source }}</pre>
+    </template>
   </div>
 </template>
 
@@ -8,6 +16,13 @@
 import { Base64} from 'js-base64';
 
 export default {
+  props: {
+    display: {
+      type: String,
+      required: false,
+      default: 'default',
+    },
+  },
   data() {
     return {
       source: '',

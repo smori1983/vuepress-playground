@@ -1,6 +1,7 @@
 const { Base64 } = require('js-base64');
 
-const marker = '[[source]]';
+const markerDefault = '[[source]]';
+const markerContainer = '[[source:container]]';
 
 module.exports = (md) => {
   md.block.ruler.before('paragraph', 'playground_view_source', blockRule);
@@ -9,7 +10,13 @@ module.exports = (md) => {
 const blockRule = (state, startLine, endLine, silent) => {
   const lineText = state.src.slice(state.bMarks[startLine], state.eMarks[startLine]);
 
-  if (lineText !== marker) {
+  let display = null;
+
+  if (lineText === markerDefault) {
+    display = 'default';
+  } else if (lineText === markerContainer) {
+    display = 'container';
+  } else {
     return false;
   }
 
@@ -19,7 +26,7 @@ const blockRule = (state, startLine, endLine, silent) => {
 
   const token = new state.Token('html_block', '', 0);
   token.map = [startLine, state.line];
-  token.content = `<PlaygroundViewSourceDefault>${encoded}</PlaygroundViewSourceDefault>`;
+  token.content = `<PlaygroundViewSourceDefault display="${display}">${encoded}</PlaygroundViewSourceDefault>`;
   token.block = true;
 
   state.tokens.push(token);
