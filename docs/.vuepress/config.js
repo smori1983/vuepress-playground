@@ -34,8 +34,10 @@ module.exports = {
         collapsable: false,
         sidebarDepth: 0,
         children: [
-          '/view_source/page01.md',
-          '/view_source/page02.md',
+          '/view_source/page10.md',
+          '/view_source/page11.md',
+          '/view_source/page20.md',
+          '/view_source/page21.md',
         ]
       },
       {
