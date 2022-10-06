@@ -13,7 +13,6 @@ module.exports = {
         sidebarDepth: 0,
         children: [
           '/debug/site_pages.md',
-          '/debug/update_info.md',
         ],
       },
       {
@@ -24,19 +23,8 @@ module.exports = {
           '/demo/data_binding.md',
           '/demo/keyboard_event.md',
           '/demo/auto_link_label.md',
-          '/demo/update_info.md',
           '/demo/gitgraph_editor.md',
           '/demo/gitgraph_demo.md',
-        ],
-      },
-      {
-        title: 'Update info pages',
-        collapsable: false,
-        sidebarDepth: 0,
-        children: [
-          '/update_info/page01.md',
-          '/update_info/page02.md',
-          '/update_info/page03.md',
         ],
       },
       {
@@ -67,10 +55,6 @@ module.exports = {
 
     ['auto-link-label', {
       marker: '!',
-    }],
-
-    ['frontmatter-update-info', {
-      pageEmbed: true,
     }],
 
     //['git-info', {
