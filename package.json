@@ -27,6 +27,7 @@
     "vuepress-plugin-md-enhance": "^1.30.0",
     "vuepress-plugin-sitemap": "^2.3.1",
     "vuepress-plugin-tags": "^1.0.2",
+    "vuepress-plugin-view-source": "^1.0.0",
     "vuepress-types": "^0.9.4"
   },
   "repository": {
