@@ -23,8 +23,6 @@ module.exports = {
           '/demo/data_binding.md',
           '/demo/keyboard_event.md',
           '/demo/auto_link_label.md',
-          '/demo/gitgraph_editor.md',
-          '/demo/gitgraph_demo.md',
         ],
       },
       {
@@ -68,10 +66,6 @@ module.exports = {
     //  additionalArgs: '--no-merges',
     //  onlyFirstAndLastCommit: false,
     //}],
-
-    ['gitgraph-minigram', {
-      marker: 'gitgraph',
-    }],
 
     ['keyboard-event-debug'],
 
