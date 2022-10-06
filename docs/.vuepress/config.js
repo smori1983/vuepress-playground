@@ -109,6 +109,8 @@ module.exports = {
 
     ['tags'],
 
+    ['view-source'],
+
     [require('./plugins/playground-data-binding')],
 
     [require('./plugins/playground-release-diary')],
