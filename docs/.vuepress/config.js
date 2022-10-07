@@ -16,13 +16,19 @@ module.exports = {
         ],
       },
       {
-        title: 'Demo',
+        title: 'Plugin (keyboard event debug)',
         collapsable: false,
         sidebarDepth: 0,
         children: [
-          '/demo/data_binding.md',
-          '/demo/keyboard_event.md',
-          '/demo/auto_link_label.md',
+          ['/plugin_keyboard_event_debug/demo.md', 'Demo'],
+        ],
+      },
+      {
+        title: 'Plugin (auto link label)',
+        collapsable: false,
+        sidebarDepth: 0,
+        children: [
+          '/plugin_auto_link_label/demo.md',
         ],
       },
       {
@@ -41,6 +47,7 @@ module.exports = {
         collapsable: false,
         sidebarDepth: 0,
         children: [
+          '/demo/data_binding.md',
           '/misc/table_search.md',
           '/release/',
         ],
