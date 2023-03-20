@@ -15,6 +15,7 @@
     "vuejs-datepicker": "^1.6.2"
   },
   "devDependencies": {
+    "@vue/babel-preset-app": "4.5.18",
     "@vuepress/plugin-back-to-top": "^1.9.7",
     "@vuepress/shared-utils": "^1.9.7",
     "http-server": "^14.1.1",
