@@ -42,6 +42,17 @@ module.exports = {
         ],
       },
       {
+        title: 'Aozora bunko',
+        collapsable: false,
+        sidebarDepth: 0,
+        children: [
+          '/aozora/edogawa_ranpo_kaijin20mensou.md',
+          '/aozora/edogawa_ranpo_kaiteinomajutsushi.md',
+          '/aozora/mori_ougai_kanoyouni.md',
+          '/aozora/mori_ougai_maihime.md',
+        ],
+      },
+      {
         path: '/misc/',
         title: 'Misc',
         collapsable: false,
