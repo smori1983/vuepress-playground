@@ -5,65 +5,98 @@ module.exports = {
   head: [],
   dest: 'docs/.vuepress/dist',
 
+  locales: {
+    '/': {
+      lang: 'ja-JP',
+    },
+    '/en/': {
+      lang: 'en-US',
+    },
+  },
+
   themeConfig: {
-    sidebar: [
-      {
-        title: 'Debug',
-        collapsable: false,
-        sidebarDepth: 0,
-        children: [
-          '/debug/site_pages.md',
+    locales: {
+      '/': {
+        sidebar: [
+          {
+            title: 'Debug',
+            collapsable: false,
+            sidebarDepth: 0,
+            children: [
+              '/debug/site_pages.md',
+            ],
+          },
+          {
+            title: 'Plugin (keyboard event debug)',
+            collapsable: false,
+            sidebarDepth: 0,
+            children: [
+              ['/plugin_keyboard_event_debug/demo.md', 'Demo'],
+            ],
+          },
+          {
+            title: 'Plugin (auto link label)',
+            collapsable: false,
+            sidebarDepth: 0,
+            children: [
+              '/plugin_auto_link_label/demo.md',
+            ],
+          },
+          {
+            title: 'Plugin (tags)',
+            collapsable: false,
+            sidebarDepth: 0,
+            children: [
+              '/plugin_tags/overview.md',
+              '/plugin_tags/page01.md',
+              '/plugin_tags/page02.md',
+            ],
+          },
+          {
+            title: 'Aozora bunko',
+            collapsable: false,
+            sidebarDepth: 0,
+            children: [
+              '/aozora/edogawa_ranpo_kaijin20mensou.md',
+              '/aozora/edogawa_ranpo_kaiteinomajutsushi.md',
+              '/aozora/mori_ougai_kanoyouni.md',
+              '/aozora/mori_ougai_maihime.md',
+            ],
+          },
+          {
+            path: '/misc/',
+            title: 'Misc',
+            collapsable: false,
+            sidebarDepth: 0,
+            children: [
+              '/demo/data_binding.md',
+              '/misc/table_search.md',
+              '/release/',
+            ],
+          },
         ],
       },
-      {
-        title: 'Plugin (keyboard event debug)',
-        collapsable: false,
-        sidebarDepth: 0,
-        children: [
-          ['/plugin_keyboard_event_debug/demo.md', 'Demo'],
+      '/en/': {
+        sidebar: [
+          {
+            title: 'Debug',
+            collapsable: false,
+            sidebarDepth: 0,
+            children: [
+              '/en/debug/site_pages.md',
+            ],
+          },
+          {
+            title: 'Plugin (keyboard event debug)',
+            collapsable: false,
+            sidebarDepth: 0,
+            children: [
+              ['/en/plugin_keyboard_event_debug/demo.md', 'Demo'],
+            ],
+          },
         ],
       },
-      {
-        title: 'Plugin (auto link label)',
-        collapsable: false,
-        sidebarDepth: 0,
-        children: [
-          '/plugin_auto_link_label/demo.md',
-        ],
-      },
-      {
-        title: 'Plugin (tags)',
-        collapsable: false,
-        sidebarDepth: 0,
-        children: [
-          '/plugin_tags/overview.md',
-          '/plugin_tags/page01.md',
-          '/plugin_tags/page02.md',
-        ],
-      },
-      {
-        title: 'Aozora bunko',
-        collapsable: false,
-        sidebarDepth: 0,
-        children: [
-          '/aozora/edogawa_ranpo_kaijin20mensou.md',
-          '/aozora/edogawa_ranpo_kaiteinomajutsushi.md',
-          '/aozora/mori_ougai_kanoyouni.md',
-          '/aozora/mori_ougai_maihime.md',
-        ],
-      },
-      {
-        path: '/misc/',
-        title: 'Misc',
-        collapsable: false,
-        sidebarDepth: 0,
-        children: [
-          '/demo/data_binding.md',
-          '/misc/table_search.md',
-          '/release/',
-        ],
-      },
-    ],
+    },
   },
 
   plugins: [
