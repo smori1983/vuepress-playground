@@ -1,0 +1,3 @@
+# FlexSearch Debug
+
+<PluginFlexSearchDebug/>

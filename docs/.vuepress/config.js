@@ -24,6 +24,7 @@ module.exports = {
             sidebarDepth: 0,
             children: [
               '/debug/site_pages.md',
+              '/debug/flexsearch.md',
             ],
           },
           {
