@@ -118,6 +118,8 @@ module.exports = {
     //  onlyFirstAndLastCommit: false,
     //}],
 
+    ['@smori1983/vuepress-plugin-flexsearch'],
+
     ['keyboard-event-debug'],
 
     //['sitemap', {
