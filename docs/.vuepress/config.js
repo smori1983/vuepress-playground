@@ -121,7 +121,10 @@ module.exports = {
     //  onlyFirstAndLastCommit: false,
     //}],
 
-    ['@smori1983/vuepress-plugin-flexsearch'],
+    ['@smori1983/vuepress-plugin-flexsearch', {
+      searchHotKeys: ['s', '/'],
+      searchMaxSuggestions: 20,
+    }],
 
     ['keyboard-event-debug'],
 
