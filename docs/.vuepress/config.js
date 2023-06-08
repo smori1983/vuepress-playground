@@ -15,6 +15,8 @@ module.exports = {
   },
 
   themeConfig: {
+    searchPlaceholder: 'Search ( s, / )',
+
     locales: {
       '/': {
         sidebar: [
