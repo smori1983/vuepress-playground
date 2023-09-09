@@ -122,8 +122,15 @@ module.exports = {
     //}],
 
     ['@smori1983/vuepress-plugin-flexsearch', {
-      searchHotKeys: ['s', '/'],
-      searchMaxSuggestions: 20,
+      //searchHotKeys: ['s', '/'],
+      //searchMaxSuggestions: 20,
+      //searchPaths: null,
+      //uiAlignRightFactor: 10,
+      //excerptAroundLength: 100,
+      //excerptHeadText: '... ',
+      //excerptTailText: ' ...',
+      //tokenizerType: 'kuromoji.default',
+      //ngramSize: 3,
     }],
 
     ['keyboard-event-debug'],
