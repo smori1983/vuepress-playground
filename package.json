@@ -15,7 +15,7 @@
     "vuejs-datepicker": "^1.6.2"
   },
   "devDependencies": {
-    "@smori1983/vuepress-plugin-flexsearch": "github:smori1983/vuepress-plugin-flexsearch#33cf2252ada00dabd651ee3ff659d1f13496d0eb",
+    "@smori1983/vuepress-plugin-flexsearch": "^1.0.0",
     "@vue/babel-preset-app": "4.5.18",
     "@vuepress/plugin-back-to-top": "^1.9.7",
     "@vuepress/shared-utils": "^1.9.7",
