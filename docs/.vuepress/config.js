@@ -15,6 +15,8 @@ module.exports = {
   },
 
   themeConfig: {
+    searchPlaceholder: 'Search ( s, / )',
+
     locales: {
       '/': {
         sidebar: [
@@ -24,6 +26,7 @@ module.exports = {
             sidebarDepth: 0,
             children: [
               '/debug/site_pages.md',
+              '/debug/flexsearch.md',
             ],
           },
           {
@@ -117,6 +120,18 @@ module.exports = {
     //  additionalArgs: '--no-merges',
     //  onlyFirstAndLastCommit: false,
     //}],
+
+    ['@smori1983/vuepress-plugin-flexsearch', {
+      //searchHotKeys: ['s', '/'],
+      //searchMaxSuggestions: 20,
+      //searchPaths: null,
+      //uiAlignRightFactor: 10,
+      //excerptAroundLength: 100,
+      //excerptHeadText: '... ',
+      //excerptTailText: ' ...',
+      //tokenizerType: 'kuromoji.default',
+      //ngramSize: 3,
+    }],
 
     ['keyboard-event-debug'],
 
