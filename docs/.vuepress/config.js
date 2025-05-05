@@ -144,6 +144,8 @@ module.exports = {
 
     ['view-source'],
 
+    [require('./plugins/home')],
+
     [require('./plugins/playground-data-binding')],
 
     [require('./plugins/playground-release-diary')],
