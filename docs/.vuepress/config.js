@@ -29,6 +29,7 @@ module.exports = {
               '/debug/flexsearch.md',
             ],
           },
+          '/md-enhance/',
           {
             title: 'Plugin (keyboard event debug)',
             collapsable: false,
@@ -134,6 +135,12 @@ module.exports = {
     }],
 
     ['keyboard-event-debug'],
+
+    ['md-enhance', {
+      codegroup: true,
+      mermaid: true,
+      tasklist: true,
+    }],
 
     //['sitemap', {
     //  hostname: 'https://vuepress-playground.example.com',
